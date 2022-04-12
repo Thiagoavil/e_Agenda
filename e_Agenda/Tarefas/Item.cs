@@ -8,7 +8,7 @@ namespace e_Agenda.Tarefas
 {
     internal class Item
     {
-        string Execucao, descricao;
+        public string Execucao, descricao;
         bool itemConcluido;
     }
 }

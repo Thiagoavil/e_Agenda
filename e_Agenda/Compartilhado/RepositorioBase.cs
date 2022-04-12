@@ -15,17 +15,19 @@ namespace e_Agenda.Compartilhado
             registros = new List<T>();
         }
 
-        public  string Inserir(T entidade)
+        public virtual string Inserir(T entidade)
         {
-             string deuCerto = entidade.Validar();
+             ResultadoDaValidacao validacao = entidade.Validar();
 
-            if (deuCerto == "sucesso")
-            {
+            if (validacao.Status == StatusValidacao.Erro)
+                return validacao.ToString();
+            
                 entidade.numero = ++contadorNumero;
+
                 registros.Add(entidade);
-            }
-            else
-                return deuCerto;
+           
+            
+                
 
             return "REGISTRO_VALIDO";
         }

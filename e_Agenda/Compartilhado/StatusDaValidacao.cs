@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace e_Agenda.Compartilhado
 {
-    internal abstract class EntidadeBase
+    public enum StatusValidacao
     {
-        public int numero;
-
-
-        public abstract ResultadoDaValidacao Validar(); 
+        Ok, Erro
     }
 }
