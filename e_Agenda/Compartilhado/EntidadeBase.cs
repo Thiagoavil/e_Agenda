@@ -11,6 +11,7 @@ namespace e_Agenda.Compartilhado
         public int numero;
 
 
-        public abstract ResultadoDaValidacao Validar(); 
+        public abstract ResultadoDaValidacao Validar();
+        public abstract string ToString();
     }
 }

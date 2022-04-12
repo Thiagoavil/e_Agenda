@@ -26,7 +26,6 @@ namespace e_Agenda.Compartilhado
 
                 registros.Add(entidade);
            
-            
                 
 
             return "REGISTRO_VALIDO";
@@ -82,13 +81,7 @@ namespace e_Agenda.Compartilhado
 
         public List<T> Filtrar(Predicate<T> condicao)
         {
-            List<T> registrosFiltrados = new List<T>();
-
-            foreach (T registro in registros)
-                if (condicao(registro))
-                    registrosFiltrados.Add(registro);
-
-            return registrosFiltrados;
+            return registros.FindAll(condicao);
         }
     }
 }

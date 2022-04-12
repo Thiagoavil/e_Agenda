@@ -17,6 +17,7 @@ namespace e_Agenda.Tarefas
         List<Tarefa> tarefasConcluidas;
         List<Tarefa> tarefasEmAndamento;
 
+        
         public enum Prioridade
         {
             Baixa, Media, Alta
@@ -30,18 +31,20 @@ namespace e_Agenda.Tarefas
             this.dataDeCriacao = dataDeConclusao;
             
         }
+        //Testar(grande chance de erro
         public string ToStringDeitens()
         {
             StringBuilder si = new StringBuilder();
 
             foreach (Item item in items)
             {
-               si.Append(item.Execucao);
+               si.AppendLine(item.Execucao);
             }
 
             return si.ToString();
         }
 
+        //Testar(grande chance de erro
         public override string ToString()
         {
             return "Titulo: " + titulo + Environment.NewLine +
@@ -49,6 +52,7 @@ namespace e_Agenda.Tarefas
                 "Data de criação: " + dataDeCriacao + Environment.NewLine +
                 "Data de conclusão: " + dataDeConclusao + Environment.NewLine +
                 "Pecentual Completo: " + percentual + Environment.NewLine+
+                //aqui ó
                 "Tarefas"+  ToStringDeitens() ;
         }
                 
