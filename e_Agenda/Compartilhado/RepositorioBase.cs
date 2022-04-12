@@ -31,11 +31,11 @@ namespace e_Agenda.Compartilhado
             return "REGISTRO_VALIDO";
         }
 
-        public bool Editar(int numeroSelecionado, T novaEntidade)
+        public bool Editar(Predicate<T> condicao, T novaEntidade)
         {
             foreach (T entidade in registros)
             {
-                if (numeroSelecionado == entidade.numero)
+                if (condicao(entidade))
                 {
                     novaEntidade.numero = entidade.numero;
 
@@ -49,17 +49,16 @@ namespace e_Agenda.Compartilhado
             return false;
         }
 
-        public bool Excluir(int numeroSelecionado)
+        public bool Excluir(Predicate<T> condicao)
         {
             foreach (T entidade in registros)
             {
-                if (numeroSelecionado == entidade.numero)
+                if (condicao(entidade))
                 {
                     registros.Remove(entidade);
                     return true;
                 }
             }
-
             return false;
         }
 

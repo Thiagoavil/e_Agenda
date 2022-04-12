@@ -13,5 +13,6 @@ namespace e_Agenda.Compartilhado
 
         public abstract ResultadoDaValidacao Validar();
         public abstract string ToString();
+        
     }
 }
