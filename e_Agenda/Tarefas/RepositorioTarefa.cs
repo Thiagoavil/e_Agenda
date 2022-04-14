@@ -9,5 +9,10 @@ namespace e_Agenda.Tarefas
 {
     internal class RepositorioTarefa : RepositorioBase<Tarefa>
     {
+
+        public Tarefa EditarTarefa(Tarefa antiga,Tarefa nova)
+        {
+
+        }
     }
 }

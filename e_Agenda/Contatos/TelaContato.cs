@@ -12,9 +12,10 @@ namespace e_Agenda.Contatos
         private readonly RepositorioContato repositorioContato;
         private readonly Notificador notificador;
 
-        public TelaContato() : base("Cadastro de Contato")
+        public TelaContato(RepositorioContato repositorioContato,Notificador notificador) : base("Cadastro de Contato")
         {
-
+            this.repositorioContato = repositorioContato;
+            this.notificador=notificador;
         }
         
         public void InserirRegistro()
@@ -87,15 +88,18 @@ namespace e_Agenda.Contatos
             MostrarTitulo("Visualizando Contato");
 
             List<Contato> contatos = repositorioContato.SelecionarTodos();
+            
+            AgrupadosPorCargo();
 
             if (contatos.Count == 0)
             {
                 notificador.ApresentarMensagem("Não há nenhum contato disponível.", "atencao");
                 return false;
             }
-
-            foreach (Contato contato in contatos)
-                Console.WriteLine(contato.ToString());
+            
+            foreach(Contato contato in contatos)
+                  Console.WriteLine(contato.ToString());
+           
 
             Console.ReadLine();
 
@@ -124,6 +128,11 @@ namespace e_Agenda.Contatos
 
             return contato;
             
+        }
+
+        public void AgrupadosPorCargo()
+        {
+            repositorioContato.registros.Sort((a,b)=>a.cargo.CompareTo(b.cargo));
         }
 
     }

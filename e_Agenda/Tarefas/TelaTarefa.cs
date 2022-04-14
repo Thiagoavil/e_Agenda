@@ -1,20 +1,18 @@
 ﻿using e_Agenda.Compartilhado;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace e_Agenda.Tarefas
 {
-    internal class TelaTarefa :TelaBase , ITela
+    internal class TelaTarefa : TelaBase, ITela
     {
         private readonly RepositorioTarefa repositorioTarefa;
         private readonly Notificador notificador;
 
-        public TelaTarefa() : base ("Cadastro de tarefa")
+        public TelaTarefa(RepositorioTarefa repositorioTarefa, Notificador notificador) : base("Cadastro de tarefa")
         {
-
+            this.repositorioTarefa = repositorioTarefa;
+            this.notificador = notificador;
         }
 
         public void InserirRegistro()
@@ -34,12 +32,12 @@ namespace e_Agenda.Tarefas
                 contador++;
 
             } while (contador != quantidadeDeItens);
-           
+
 
 
             string statusValidacao = repositorioTarefa.Inserir(tarefa);
 
-            
+
 
             if (statusValidacao == "REGISTRO_VALIDO")
                 notificador.ApresentarMensagem("tarefa cadastrada com sucesso!", "sucesso");
@@ -102,12 +100,29 @@ namespace e_Agenda.Tarefas
             if (tipo == "Tela")
                 MostrarTitulo("Visualizando Tarefa");
 
-            List<Tarefa> tarefas = repositorioTarefa.SelecionarTodos();
+
+            List<Tarefa> tarefas = new List<Tarefa>();
+
+            Console.WriteLine("Digite 1 para visualizar tarefas concluidas");
+            Console.WriteLine("Digite 2 para visualizar tarefas incompletas");
+            string opcaoVisualizar = Console.ReadLine();
+           
+                if (opcaoVisualizar == "1")
+                {
+                    tarefas = repositorioTarefa.Filtrar(x => x.concluido = true);
+                }
+                else if (opcaoVisualizar=="2")
+                {
+                    tarefas = repositorioTarefa.Filtrar(x => x.concluido = false);
+                }
+
+
+                AgrupadosPorPrioridade();
 
             if (tarefas.Count == 0)
             {
-                notificador.ApresentarMensagem("Não há nenhuma Tarefa disponível.", "atencao");
-                return false;
+                    notificador.ApresentarMensagem("Não há nenhuma Tarefa disponível.", "atencao");
+                    return false;
             }
 
             foreach (Tarefa tarefa in tarefas)
@@ -148,6 +163,10 @@ namespace e_Agenda.Tarefas
             Item item = new Item(descricao);
 
             return item;
+        }
+        public void AgrupadosPorPrioridade()
+        {
+            repositorioTarefa.registros.Sort((a, b) => a.tipoprioridade.CompareTo(b.tipoprioridade));
         }
     }
 }

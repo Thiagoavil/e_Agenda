@@ -8,17 +8,21 @@ using e_Agenda.Contatos;
 
 namespace e_Agenda.Compromisso
 {
-    internal class TelaCompromisso :TelaBase,ITela
+    internal class TelaCompromisso :TelaBase, ITela
     {
         private readonly TelaContato telaContato;
         private readonly RepositorioCompromisso repositorioCompromisso;
         private readonly RepositorioContato repositorioContato;
         private readonly Notificador notificador;
 
-        public TelaCompromisso() : base("Cadastro de Compromisso")
+        public TelaCompromisso(RepositorioContato repositorioContato,RepositorioCompromisso repositorioCompromisso,
+            Notificador notificador) : base("Cadastro de Compromisso")
         {
-
+            this.repositorioContato=repositorioContato;
+            this.repositorioCompromisso=repositorioCompromisso;
+            this.notificador=notificador;
         }
+
         public void InserirRegistro()
         {
             MostrarTitulo("Inserindo Compromisso");
@@ -139,7 +143,7 @@ namespace e_Agenda.Compromisso
 
             if (!temContatoDisponiveis)
             {
-                notificador.ApresentarMensagem("Não há nenhuma contatos disponível para cadastrar revistas", "atencao");
+                notificador.ApresentarMensagem("Não há nenhuma contatos disponível ", "atencao");
                 return null;
             }
 

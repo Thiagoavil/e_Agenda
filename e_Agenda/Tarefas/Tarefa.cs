@@ -11,7 +11,8 @@ namespace e_Agenda.Tarefas
     {
         int prioridade,percentual;
         string titulo;
-        Prioridade tipoprioridade;
+        public bool concluido;
+        public Prioridade tipoprioridade;
         DateTime dataDeCriacao, dataDeConclusao;
         List<Item> listaDeItens;
 
@@ -31,6 +32,7 @@ namespace e_Agenda.Tarefas
             this.dataDeCriacao = datadecriacao;
             this.dataDeCriacao = dataDeConclusao;
             this.tipoprioridade = new Prioridade();
+            concluido = false;
             listaDeItens = new List<Item>();
             
             if (prioridade == 1)
@@ -89,6 +91,11 @@ namespace e_Agenda.Tarefas
         public void InserirItensNaTarefa(Item items)
         {
             listaDeItens.Add(items);
+        }
+
+        public List<Item> SelecionarItens()
+        {
+            return listaDeItens;
         }
     }
 }
