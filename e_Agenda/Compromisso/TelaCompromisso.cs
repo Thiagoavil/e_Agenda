@@ -112,7 +112,7 @@ namespace e_Agenda.Compromisso
         private Compromisso Obter(Contato contatoselecionado)
         {
 
-            Console.Write("Digite a data do compromisso: ");
+            Console.Write("Digite a data do compromisso:  (dd/mm/aaaa)");
             DateTime dataCompromisso = DateTime.Parse(Console.ReadLine());
 
             Console.Write("Digite o horário de inicio do compromisso: ");
