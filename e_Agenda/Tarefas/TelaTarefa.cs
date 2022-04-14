@@ -60,9 +60,11 @@ namespace e_Agenda.Tarefas
             Console.WriteLine("Digite o numeros da tarefa que quer editar");
             int numeroTarefa = Convert.ToInt32(Console.ReadLine());
 
-            Tarefa tarefaAtualizado = Obter();
+            Tarefa antiga = repositorioTarefa.SelecionarRegistro(x=>x.numero==numeroTarefa);
 
-            bool conseguiuEditar = repositorioTarefa.Editar(x => x.numero == numeroTarefa, tarefaAtualizado);
+            Tarefa tarefaAtualizada = ObterParaEditar(antiga);
+
+            bool conseguiuEditar = repositorioTarefa.Editar(x => x.numero == numeroTarefa, tarefaAtualizada);
 
             if (!conseguiuEditar)
                 notificador.ApresentarMensagem("Não foi possível editar.", "erro");
@@ -167,6 +169,27 @@ namespace e_Agenda.Tarefas
         public void AgrupadosPorPrioridade()
         {
             repositorioTarefa.registros.Sort((a, b) => a.tipoprioridade.CompareTo(b.tipoprioridade));
+        }
+
+        private Tarefa ObterParaEditar(Tarefa antiga)
+        {
+            List<Item> itens=antiga.listaDeItens;
+
+            DateTime dataDeCriacao = antiga.dataDeCriacao;
+
+            Console.Write("Digite o titulo da tarefa: ");
+            string titulo = Console.ReadLine();
+
+            Console.Write("Digite o nivel de prioridade:\n1 - Baixa\n2 - Media\n3 - Alta ");
+            int prioridade = Convert.ToInt32(Console.ReadLine());
+           
+            Console.Write("Digite a empresa do contato: ");
+            DateTime dataDeConclusao = DateTime.Parse(Console.ReadLine());
+
+            Tarefa tarefa = new Tarefa(titulo, prioridade, dataDeCriacao, dataDeConclusao,itens);
+
+            return tarefa;
+
         }
     }
 }

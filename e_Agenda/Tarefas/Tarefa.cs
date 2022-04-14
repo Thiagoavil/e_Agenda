@@ -13,10 +13,11 @@ namespace e_Agenda.Tarefas
         string titulo;
         public bool concluido;
         public Prioridade tipoprioridade;
-        DateTime dataDeCriacao, dataDeConclusao;
-        List<Item> listaDeItens;
+        public DateTime dataDeCriacao, dataDeConclusao;
+        public List<Item> listaDeItens;
 
         
+
         public enum Prioridade
         {
             Baixa = 1,
@@ -44,7 +45,27 @@ namespace e_Agenda.Tarefas
 
 
         }
-        
+
+        public Tarefa(string titulo, int prioridade, DateTime datadecriacao, DateTime dataDeConclusao,List<Item>itens)
+        {
+
+            this.titulo = titulo;
+
+            this.dataDeCriacao = datadecriacao;
+            this.dataDeCriacao = dataDeConclusao;
+            this.tipoprioridade = new Prioridade();
+            concluido = false;
+            listaDeItens = itens;
+
+            if (prioridade == 1)
+                this.tipoprioridade = Prioridade.Baixa;
+            else if (prioridade == 2)
+                this.tipoprioridade = Prioridade.Media;
+            else
+                this.tipoprioridade = Prioridade.Alta;
+
+        }
+
         //Testar(grande chance de erro
         public string ToStringDeitens()
         {
