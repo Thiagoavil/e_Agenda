@@ -15,6 +15,24 @@ namespace e_Agenda.Tarefas
             this.notificador = notificador;
         }
 
+        public override string MostrarOpcoes()
+        {
+            MostrarTitulo(Titulo);
+
+            Console.WriteLine("Digite 1 para cadastrar tarefa");
+            Console.WriteLine("Digite 2 para Editar tarefa");
+            Console.WriteLine("Digite 3 para Excluir tarefa");
+            Console.WriteLine("Digite 4 para Visualizar tarefas");
+            Console.WriteLine("Digite 5 para finalizar Item da tarefa");
+
+            Console.WriteLine("Digite s para sair");
+
+            string opcao = Console.ReadLine();
+
+            return opcao;
+
+        }
+
         public void InserirRegistro()
         {
             MostrarTitulo("Inserindo tarefa");
@@ -38,9 +56,11 @@ namespace e_Agenda.Tarefas
             string statusValidacao = repositorioTarefa.Inserir(tarefa);
 
 
-
             if (statusValidacao == "REGISTRO_VALIDO")
+            {
                 notificador.ApresentarMensagem("tarefa cadastrada com sucesso!", "sucesso");
+                tarefa.percentual = atualizarPorcentagem(tarefa);
+            }
             else
                 notificador.ApresentarMensagem(statusValidacao, "erro");
         }
@@ -49,9 +69,9 @@ namespace e_Agenda.Tarefas
         {
             MostrarTitulo("Editando Tarefa");
 
-            bool temContatoCadastrados = VisualizarRegistro("Pesquisando");
+            bool temTarefaCadastrados = VisualizarRegistro("Pesquisando");
 
-            if (temContatoCadastrados == false)
+            if (temTarefaCadastrados == false)
             {
                 notificador.ApresentarMensagem("Nenhuma tarefa cadastrada para poder editar.", "atencao");
                 return;
@@ -67,7 +87,10 @@ namespace e_Agenda.Tarefas
             bool conseguiuEditar = repositorioTarefa.Editar(x => x.numero == numeroTarefa, tarefaAtualizada);
 
             if (!conseguiuEditar)
+            {
                 notificador.ApresentarMensagem("Não foi possível editar.", "erro");
+                tarefaAtualizada.percentual = atualizarPorcentagem(tarefaAtualizada);
+            }
             else
                 notificador.ApresentarMensagem("Tarefa editada com sucesso", "sucesso");
 
@@ -105,17 +128,35 @@ namespace e_Agenda.Tarefas
 
             List<Tarefa> tarefas = new List<Tarefa>();
 
+            Console.WriteLine("Digite 1 para visualizar tarefas diarias");
+            Console.WriteLine("Digite 2 para visualizar tarefas semanais");
+            Console.WriteLine("Digite 3 para visualizar tarefas Mensais");
+            string opcaoDePeriodo=Console.ReadLine();
+
+            if(opcaoDePeriodo == "1")
+            {
+                tarefas = repositorioTarefa.Filtrar(x => x.dataDeConclusao == DateTime.Now);
+            }
+            else if(opcaoDePeriodo=="2")
+            {
+                
+            }
+            else if (opcaoDePeriodo=="3")
+            {
+
+            }
+
             Console.WriteLine("Digite 1 para visualizar tarefas concluidas");
             Console.WriteLine("Digite 2 para visualizar tarefas incompletas");
             string opcaoVisualizar = Console.ReadLine();
            
                 if (opcaoVisualizar == "1")
                 {
-                    tarefas = repositorioTarefa.Filtrar(x => x.concluido = true);
+                    tarefas = repositorioTarefa.Filtrar(x => x.concluido == true);
                 }
                 else if (opcaoVisualizar=="2")
                 {
-                    tarefas = repositorioTarefa.Filtrar(x => x.concluido = false);
+                    tarefas = repositorioTarefa.Filtrar(x => x.concluido == false);
                 }
 
 
@@ -134,6 +175,45 @@ namespace e_Agenda.Tarefas
 
             return true;
 
+        }
+
+        public void ConcluirItem()
+        {
+            bool temTarefaCadastrados = VisualizarRegistro("Pesquisando");
+
+
+            if (temTarefaCadastrados == false)
+            {
+                notificador.ApresentarMensagem(
+                    "Nenhuma Tarefa cadastrada", "atencao");
+                return;
+            }
+
+            Console.WriteLine("Digite o Id da tarefa que deseja mexer");
+            int numeroDaTarefa =Convert.ToInt32(Console.ReadLine());
+
+            Tarefa tarefaSelecionada=repositorioTarefa.SelecionarRegistro(x=>x.numero==numeroDaTarefa);
+
+            string itensSelecionados=tarefaSelecionada.ToStringDeitens();
+
+            Console.WriteLine(itensSelecionados);
+
+            Console.WriteLine("Digite o Id do item que quer concluir");
+            int numeroDoItem=Convert.ToInt32(Console.ReadLine());
+
+            Item itemSelecionado=tarefaSelecionada.SelecionarItem(x=>x.numero== numeroDoItem);
+
+            bool finalizada = tarefaSelecionada.concluirItem(itemSelecionado);
+           
+            if(finalizada == true)
+            {
+                notificador.ApresentarMensagem("item Finalizado ", "sucesso");
+                tarefaSelecionada.percentual = atualizarPorcentagem(tarefaSelecionada);
+            }
+            else
+            {
+                notificador.ApresentarMensagem("item não foi finalizada","erro");
+            }
         }
 
         private Tarefa Obter()
@@ -166,6 +246,7 @@ namespace e_Agenda.Tarefas
 
             return item;
         }
+
         public void AgrupadosPorPrioridade()
         {
             repositorioTarefa.registros.Sort((a, b) => a.tipoprioridade.CompareTo(b.tipoprioridade));
@@ -190,6 +271,25 @@ namespace e_Agenda.Tarefas
 
             return tarefa;
 
+        }
+
+        public decimal atualizarPorcentagem(Tarefa tarefaSelecionada)
+        {
+            decimal pedaçoDaPorcentagem = tarefaSelecionada.listaDeItens.Count / 100;
+            decimal porcentagemDeConclusão = 0;
+
+            foreach(Item item in tarefaSelecionada.listaDeItens)
+            {
+                if (item.itemConcluido)
+                    porcentagemDeConclusão += pedaçoDaPorcentagem;
+            }
+
+            if(porcentagemDeConclusão >= 99.5m)
+            {
+                tarefaSelecionada.concluido = true;
+            }
+
+            return porcentagemDeConclusão;
         }
     }
 }

@@ -9,7 +9,8 @@ namespace e_Agenda.Tarefas
 {
     internal class Tarefa : EntidadeBase
     {
-        int prioridade,percentual;
+        int prioridade;
+        public decimal percentual;
         string titulo;
         public bool concluido;
         public Prioridade tipoprioridade;
@@ -87,7 +88,7 @@ namespace e_Agenda.Tarefas
                 "prioridade: " + tipoprioridade + Environment.NewLine +
                 "Data de criação: " + dataDeCriacao + Environment.NewLine +
                 "Data de conclusão: " + dataDeConclusao + Environment.NewLine +
-                "Pecentual Completo: " + percentual + Environment.NewLine+
+                "Pecentual Completo: " + Math.Round(percentual,1) + Environment.NewLine+
                 //aqui ó
                 "Tarefas"+  ToStringDeitens() ;
         }
@@ -117,6 +118,32 @@ namespace e_Agenda.Tarefas
         public List<Item> SelecionarItens()
         {
             return listaDeItens;
+        }
+
+        public Item SelecionarItem(Predicate<Item> condicao)
+        {
+            foreach (Item item in listaDeItens)
+            {
+                if (condicao(item))
+                    return item;
+            }
+
+            return null;
+        }
+
+        public bool concluirItem(Item itemSelecionado)
+        {
+            itemSelecionado.itemConcluido = true;
+            
+            if(itemSelecionado.itemConcluido == true)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+             
         }
     }
 }

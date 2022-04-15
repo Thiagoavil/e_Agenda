@@ -11,7 +11,8 @@ namespace e_Agenda.Compromisso
     internal class Compromisso : EntidadeBase 
     {
         public Contato contato;
-        DateTime dataCompromisso, horarioDeInicio, horarioDeFim;
+        public DateTime dataCompromisso;
+        DateTime horarioDeInicio, horarioDeFim;
         string assunto, local;
 
         public Compromisso(Contato contatoselecionado, DateTime dataCompromisso, DateTime horarioDeInicio,DateTime horarioDeFim, 

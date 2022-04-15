@@ -10,14 +10,14 @@ namespace e_Agenda.Tarefas
     internal class Item : EntidadeBase
     {
         public string descricao;
-        bool itemConcluido;
+        public bool itemConcluido;
         
 
         public Item(string descricao)
         {
             
             this.descricao = descricao;
-            bool itemConcluido = false;
+            this.itemConcluido = false;
         }
 
         public override string ToString()
@@ -42,5 +42,6 @@ namespace e_Agenda.Tarefas
 
             return new ResultadoDaValidacao(erros);
         }
+
     }
 }

@@ -96,16 +96,26 @@ namespace e_Agenda.Compromisso
             if (tipo == "Tela")
                 MostrarTitulo("Visualizando Compromisso");
 
-            List<Compromisso> compromissos = repositorioCompromisso.SelecionarTodos();
+            List<Compromisso> compromissosFuturos = repositorioCompromisso.Filtrar(x=>x.dataCompromisso>DateTime.Now);
+            
+            List<Compromisso> compromissosPassados = repositorioCompromisso.Filtrar(x=>x.dataCompromisso<DateTime.Now);
 
-            if (compromissos.Count == 0)
+
+            if (compromissosFuturos.Count == 0 || compromissosPassados.Count==0)
             {
                 notificador.ApresentarMensagem("Não há nenhum compromisso disponível.", "atencao");
                 return false;
             }
-
-            foreach (Compromisso compromisso in compromissos)
+            
+            Console.WriteLine("Compromissos Futuros");
+            foreach (Compromisso compromisso in compromissosFuturos)
                 Console.WriteLine(compromisso.ToString());
+
+
+            Console.WriteLine("Compromissos Passados");
+            foreach (Compromisso compromisso in compromissosPassados)
+                Console.WriteLine(compromisso.ToString());
+
 
             Console.ReadLine();
 

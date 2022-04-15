@@ -25,8 +25,6 @@ namespace e_Agenda.Compartilhado
                 entidade.numero = ++contadorNumero;
 
                 registros.Add(entidade);
-           
-                
 
             return "REGISTRO_VALIDO";
         }

@@ -50,6 +50,9 @@ namespace e_Agenda
                 if (opcaoSelecionada == "4")
                     telaconta.VisualizarRegistro("Tela");
 
+                if (opcaoSelecionada == "5")
+                    telaconta.ConcluirItem();
+
             }
         }
         
