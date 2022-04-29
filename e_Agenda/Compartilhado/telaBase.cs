@@ -11,7 +11,32 @@ namespace e_Agenda.Compartilhado
 
         protected string Titulo { get; set; }
 
+        protected T ObterValor<T>(string mensagem)
+        {
+            T valor = default(T);
+            string tipo = typeof(T).Name;
+            
+            Console.WriteLine(mensagem);
 
+            try
+            {
+                valor = (T)Convert.ChangeType(Console.ReadLine(), typeof(T));
+
+            }
+            catch (FormatException)
+            {
+                switch (tipo)
+                {
+                    case "Int32":
+                        Console.WriteLine("Inválido");
+                        break;
+                }
+
+
+            }
+            return valor;
+        }
+            
         public TelaBase(string titulo)
         {
             Titulo = titulo;
