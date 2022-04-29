@@ -17,7 +17,7 @@ namespace E_Agenda.WinForms
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ContatoForm());
+            Application.Run(new TelaInicialForm());
         }
     }
 }
