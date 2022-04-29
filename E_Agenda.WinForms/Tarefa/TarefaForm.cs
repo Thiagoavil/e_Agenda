@@ -33,7 +33,7 @@ namespace E_Agenda.WinForms
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            Close();
         }
     }
 }

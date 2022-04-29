@@ -78,6 +78,8 @@
             // 
             // buttonVoltar
             // 
+            this.buttonVoltar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonVoltar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.buttonVoltar.Location = new System.Drawing.Point(900, 463);
             this.buttonVoltar.Name = "buttonVoltar";
             this.buttonVoltar.Size = new System.Drawing.Size(121, 29);
@@ -85,6 +87,7 @@
             this.buttonVoltar.Text = "Voltar";
             this.buttonVoltar.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonVoltar.UseVisualStyleBackColor = true;
+            this.buttonVoltar.Click += new System.EventHandler(this.buttonVoltar_Click);
             // 
             // ContatoForm
             // 

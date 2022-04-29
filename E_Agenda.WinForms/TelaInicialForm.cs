@@ -17,9 +17,18 @@ namespace E_Agenda.WinForms
             InitializeComponent();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnAcessarContatos_Click(object sender, EventArgs e)
         {
+            this.Hide();
 
+            ContatoForm tela = new ContatoForm();
+            
+            DialogResult resultado = tela.ShowDialog();
+
+            if (resultado == DialogResult.Cancel)
+            {
+                this.Show();
+            }
         }
 
         private void TelaInicialForm_Load(object sender, EventArgs e)
