@@ -40,5 +40,10 @@ namespace E_Agenda.WinForms
         {
 
         }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
