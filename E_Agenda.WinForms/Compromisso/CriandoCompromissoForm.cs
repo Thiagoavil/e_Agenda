@@ -8,32 +8,38 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace E_Agenda.WinForms
+namespace E_Agenda.WinForms.Compromisso
 {
-    public partial class TarefaForm : Form
+    public partial class CriandoCompromissoForm : Form
     {
-        public TarefaForm()
+        public CriandoCompromissoForm()
         {
             InitializeComponent();
         }
+
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void label2_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void buttonVoltar_Click(object sender, EventArgs e)
+        private void label5_Click(object sender, EventArgs e)
         {
-            Close();
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -115,7 +115,7 @@
             this.buttonVoltar.Text = "Voltar";
             this.buttonVoltar.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonVoltar.UseVisualStyleBackColor = true;
-            this.buttonVoltar.Click += new System.EventHandler(this.button1_Click);
+            this.buttonVoltar.Click += new System.EventHandler(this.buttonVoltar_Click);
             // 
             // tabControl1
             // 
@@ -179,6 +179,7 @@
             this.Name = "TarefaForm";
             this.ShowIcon = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tarefa";
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);

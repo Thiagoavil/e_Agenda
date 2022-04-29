@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace E_Agenda.WinForms
 {
-    public partial class Compromisso : Form
+    public partial class CompromissoForm : Form
     {
-        public Compromisso()
+        public CompromissoForm()
         {
             InitializeComponent();
         }
@@ -44,6 +44,11 @@ namespace E_Agenda.WinForms
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void buttonVoltar_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

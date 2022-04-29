@@ -43,7 +43,7 @@
             this.btnAcessarTarefas.TabIndex = 0;
             this.btnAcessarTarefas.Text = "Acessar Tarefas";
             this.btnAcessarTarefas.UseVisualStyleBackColor = true;
-            this.btnAcessarTarefas.Click += new System.EventHandler(this.button1_Click);
+            this.btnAcessarTarefas.Click += new System.EventHandler(this.buttonAcessarTarefas_Click);
             // 
             // btnAcessarContatos
             // 
@@ -63,7 +63,7 @@
             this.btnAcessarCompromisso.TabIndex = 2;
             this.btnAcessarCompromisso.Text = "Acessar Compromisso";
             this.btnAcessarCompromisso.UseVisualStyleBackColor = true;
-            this.btnAcessarCompromisso.Click += new System.EventHandler(this.button3_Click);
+            this.btnAcessarCompromisso.Click += new System.EventHandler(this.buttonAcessarCompromisso_Click);
             // 
             // label1
             // 

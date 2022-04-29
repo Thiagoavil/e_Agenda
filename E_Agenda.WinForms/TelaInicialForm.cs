@@ -21,7 +21,7 @@ namespace E_Agenda.WinForms
         {
             this.Hide();
 
-            ContatoForm tela = new ContatoForm();
+            ContatoForm tela = new ();
             
             DialogResult resultado = tela.ShowDialog();
 
@@ -36,14 +36,30 @@ namespace E_Agenda.WinForms
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonAcessarTarefas_Click(object sender, EventArgs e)
         {
+            this.Hide();
 
+            TarefaForm tela = new ();
+
+            DialogResult resultado = tela.ShowDialog();
+
+            if (resultado == DialogResult.Cancel)
+            {
+                this.Show();
+            }
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void buttonAcessarCompromisso_Click(object sender, EventArgs e)
         {
+            CompromissoForm tela = new ();
 
+            DialogResult resultado = tela.ShowDialog();
+
+            if (resultado == DialogResult.Cancel)
+            {
+                this.Show();
+            }
         }
 
         private void label1_Click(object sender, EventArgs e)
