@@ -60,6 +60,7 @@
             this.buttonAdicionarCompromisso.TabIndex = 1;
             this.buttonAdicionarCompromisso.Text = "Adicionar Compromisso";
             this.buttonAdicionarCompromisso.UseVisualStyleBackColor = false;
+            this.buttonAdicionarCompromisso.Click += new System.EventHandler(this.buttonAdicionarCompromisso_Click);
             // 
             // buttonEditarCompromisso
             // 

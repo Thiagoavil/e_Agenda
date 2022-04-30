@@ -1,4 +1,5 @@
-﻿using System;
+﻿using E_Agenda.WinForms.Compromisso;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -49,6 +50,17 @@ namespace E_Agenda.WinForms
         private void buttonVoltar_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void buttonAdicionarCompromisso_Click(object sender, EventArgs e)
+        {
+            CriandoCompromissoForm tela = new CriandoCompromissoForm();
+            DialogResult result = tela.ShowDialog();
+
+            if(result == DialogResult.OK)
+            {
+                this.Show();
+            }
         }
     }
 }
