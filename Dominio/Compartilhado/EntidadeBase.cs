@@ -6,8 +6,13 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    public enum StatusValidacao
+    public abstract class  EntidadeBase
     {
-        Ok, Erro
+        public int numero;
+
+
+        
+        public abstract string ToString();
+
     }
 }

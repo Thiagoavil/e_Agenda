@@ -1,4 +1,5 @@
 ﻿using System;
+using Dominio.Entidades;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,14 +8,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Dominio;
 
 namespace E_Agenda.WinForms
 {
     public partial class TelaInicialForm : Form
     {
+        Repositorio<Tarefa> repositorioTarefa;
+
         public TelaInicialForm()
         {
             InitializeComponent();
+            repositorioTarefa = new Repositorio<Tarefa>();
         }
 
         private void btnAcessarContatos_Click(object sender, EventArgs e)

@@ -3,22 +3,17 @@ using System.Collections.Generic;
 
 namespace Dominio
 {
-        internal class RepositorioBase<T> where T : EntidadeBase
+    public class Repositorio<T> where T : EntidadeBase
     {
-        int contadorNumero;
-        public List<T> registros;
-        public RepositorioBase()
+        protected int contadorNumero;
+        protected readonly List<T> registros;
+        public Repositorio()
         {
             registros = new List<T>();
         }
 
         public virtual string Inserir(T entidade)
         {
-            ResultadoDaValidacao validacao = entidade.Validar();
-
-            if (validacao.Status == StatusValidacao.Erro)
-                return validacao.ToString();
-
             entidade.numero = ++contadorNumero;
 
             registros.Add(entidade);
