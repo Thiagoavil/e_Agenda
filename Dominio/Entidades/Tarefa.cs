@@ -11,6 +11,7 @@ namespace Dominio
         private List<Item> itens = new List<Item>();
 
         public decimal Percentual { get; set; }
+        public int prioridade { get; set; }
         public string Prioridade { get; set; }  
         public string Titulo { get; set; }
         public DateTime DataDeCriacao { get; set; }
@@ -33,8 +34,9 @@ namespace Dominio
                     $"Concluída: {DataDeConclusao.Value.ToShortDateString()}";
 
             }
-
-            return $"ID: {id}, Título: {Titulo}, Percentual: {Percentual}";
+           
+            
+            return $" ID: { id}, Título: {Titulo}, Percentual: {Percentual} ";
         }
               
         public void AdicionarItem(Item item)
@@ -71,7 +73,7 @@ namespace Dominio
 
             var percentualConcluido = (qtdConcluidas / (decimal)itens.Count()) * 100;
 
-            return Math.Round(percentualConcluido, 2);
+            return Math.Round(percentualConcluido,1);
         }
 
         public override string Validar()

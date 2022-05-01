@@ -85,7 +85,7 @@
             this.buttonExcluirTarefa.TabIndex = 3;
             this.buttonExcluirTarefa.Text = "Excluir Tarefa";
             this.buttonExcluirTarefa.UseVisualStyleBackColor = false;
-            this.buttonExcluirTarefa.Click += new System.EventHandler(this.button3_Click);
+            this.buttonExcluirTarefa.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // buttonMarcarItems
             // 

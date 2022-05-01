@@ -12,7 +12,7 @@ namespace Dominio
 
 
         public abstract string Validar();
-        public abstract string ToString();
+        
 
     }
 }

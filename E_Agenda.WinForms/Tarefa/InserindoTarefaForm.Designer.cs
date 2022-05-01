@@ -129,6 +129,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Inserindo Tarefa";
+            this.Load += new System.EventHandler(this.InserindoTarefaForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

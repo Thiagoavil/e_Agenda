@@ -25,7 +25,8 @@ namespace E_Agenda.WinForms
         private void btnAdicionarTarefa_Click(object sender, EventArgs e)
         {
 
-            InserindoTarefaForm tela = new(new Tarefa());
+            InserindoTarefaForm tela = new();
+            tela.Tarefa=new Tarefa();
 
             DialogResult res = tela.ShowDialog();
 
@@ -47,11 +48,78 @@ namespace E_Agenda.WinForms
         }
         private void btnEditar_Click(object sender, EventArgs e)
         {
+            Tarefa tarefaSelecionada = (Tarefa)listBoxTarefaIncompletas.SelectedItem;
+            
+            bool temAlgo = VerificarTarefa(tarefaSelecionada, "Editar");
+            if (!temAlgo)
+                return;
 
+            Tarefa novaTarefa = new();
+
+            foreach (var item in tarefaSelecionada.ListaDeItens)
+            {
+                novaTarefa.ListaDeItens.Add(item);
+            }
+            novaTarefa.id = tarefaSelecionada.id;
+            novaTarefa.Titulo = tarefaSelecionada.Titulo;
+            novaTarefa.Prioridade = tarefaSelecionada.Prioridade;
+            novaTarefa.DataDeCriacao = tarefaSelecionada.DataDeCriacao;
+            novaTarefa.DataDeConclusao = tarefaSelecionada.DataDeConclusao;
+            novaTarefa.Percentual = tarefaSelecionada.Percentual;
+            
+            InserindoTarefaForm tela = new();
+            tela.Tarefa = novaTarefa;
+           
+
+            DialogResult res = tela.ShowDialog();
+
+            if (res == DialogResult.OK)
+            {
+                string status = _repositorioTarefa.Editar(tela.Tarefa,tarefaSelecionada);
+                
+                if (status == "REGISTRO_VALIDO")
+                {
+                    MessageBox.Show("Tarefa editada com sucesso!", "Tarefa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    
+                    CarregarTarefas();
+                }
+                else
+                {
+                    MessageBox.Show($"{status}\nTente novamente", "Tarefa", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    CarregarTarefas();
+                }
+            }
         }
-
-        private void button3_Click(object sender, EventArgs e)
+        private void btnExcluir_Click(object sender, EventArgs e)
         {
+            Tarefa tarefaSelecionadaIncompleta = (Tarefa)listBoxTarefaIncompletas.SelectedItem;
+
+            Tarefa tarefaSelecionadaConcluida = (Tarefa)listBoxTarefaConcluida.SelectedItem;
+
+            if (tarefaSelecionadaIncompleta == null && tarefaSelecionadaConcluida==null)
+            {
+                MessageBox.Show("Selecione uma tarefa primeiro",
+                "Exclusão de Tarefas", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            Tarefa paraExcluir=new Tarefa();
+
+            if (tarefaSelecionadaIncompleta == null)
+                paraExcluir = tarefaSelecionadaConcluida;
+            else
+                paraExcluir = tarefaSelecionadaIncompleta;
+
+
+           DialogResult resultado = MessageBox.Show("Excluir a tarefa?",
+                "Exclusão de Tarefas", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+            if (resultado == DialogResult.OK)
+            {
+                _repositorioTarefa.Excluir(paraExcluir);
+                _repositorioTarefa.AtualizarId();
+                CarregarTarefas();
+            }
 
         }
 
@@ -68,14 +136,20 @@ namespace E_Agenda.WinForms
 
             listBoxTarefaConcluida.Items.Clear();
 
+            tarefasConcluidas.OrderBy(x => x.prioridade);
+            
             foreach (Tarefa t in tarefasConcluidas)
             {
                 listBoxTarefaConcluida.Items.Add(t);
             }
 
+           
+
             List<Tarefa> tarefasPendentes = _repositorioTarefa.Filtrar(x => x.CalcularPercentualConcluido() < 100).ToList();
 
             listBoxTarefaIncompletas.Items.Clear();
+
+            tarefasPendentes.OrderBy(x => x.prioridade);
 
             foreach (Tarefa t in tarefasPendentes)
             {
@@ -91,6 +165,23 @@ namespace E_Agenda.WinForms
         private void listBoxTarefaConcluida_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        public bool VerificarTarefa(Tarefa TarefaSelecionada, string tipo)
+        {
+            bool temAlgo = _repositorioTarefa.ExisteRegistro();
+            if (!temAlgo)
+            {
+                MessageBox.Show($"Nenhuma Tarefa para {tipo}", tipo, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            if (TarefaSelecionada == null)
+            {
+                MessageBox.Show($"Selecione uma Tarefa para {tipo}", tipo, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            else
+                return true;
         }
     }
 

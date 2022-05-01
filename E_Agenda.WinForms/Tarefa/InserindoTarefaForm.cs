@@ -15,16 +15,20 @@ namespace E_Agenda.WinForms
     {
         public Tarefa tarefa;
 
-        public InserindoTarefaForm(Tarefa tarefa)
+        public InserindoTarefaForm()
         {
             InitializeComponent();
-            this.tarefa = tarefa;
-            
-                
-            if (tarefa != null)
+        }
+        public Tarefa Tarefa
+        {
+            get
             {
+                return tarefa;
+            }
+            set
+            {
+                tarefa = value;
                 textBoxTitulo.Text = tarefa.Titulo;
-
                 if (tarefa.Prioridade == "Alta")
                 {
                     radioButtonAlta.Checked = true;
@@ -44,22 +48,27 @@ namespace E_Agenda.WinForms
         {
 
             tarefa.Titulo = textBoxTitulo.Text;
-            tarefa.DataDeCriacao = DateTime.Now;
-            
 
             if (radioButtonAlta.Checked == true)
             {
                 tarefa.Prioridade = "Alta";
+                tarefa.prioridade = 1;
             }
             else if (radioButtonAlta.Checked == true)
             {
                 tarefa.Prioridade = "Media";
-                
+                tarefa.prioridade = 2;
             }
             else
             {
                 tarefa.Prioridade = "Baixa";
+                tarefa.prioridade = 3;
             }
+        }
+
+        private void InserindoTarefaForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
