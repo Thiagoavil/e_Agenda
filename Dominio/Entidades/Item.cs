@@ -34,6 +34,9 @@ namespace Dominio
             if (string.IsNullOrEmpty(Titulo))
                 sb.AppendLine("É necessário ter um titulo!");
 
+            if (sb.Length == 0)
+                sb.Append("REGISTRO_VALIDO");
+
             return sb.ToString();
         }
     }

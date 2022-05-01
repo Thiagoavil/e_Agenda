@@ -34,9 +34,13 @@ namespace E_Agenda.WinForms
                 string status = _repositorioTarefa.Inserir(tela.tarefa);
 
                 if (status == "REGISTRO_VALIDO")
+                {
                     MessageBox.Show("Tarefa inserida com sucesso!", "Tarefa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
                 else
+                {
                     MessageBox.Show($"{status}\nTente novamente", "Tarefa", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
 
                 CarregarTarefas();
             }
@@ -84,6 +88,10 @@ namespace E_Agenda.WinForms
 
         }
 
+        private void listBoxTarefaConcluida_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }

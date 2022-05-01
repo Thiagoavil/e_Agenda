@@ -52,6 +52,9 @@ namespace Dominio
             if (horarioDeInicio > DateTime.Now)
                 sb.AppendLine("Hora de inicio deve ser uma hora válida");
 
+            if (sb.Length == 0)
+                sb.Append("REGISTRO_VALIDO");
+
             return sb.ToString();
         }
 

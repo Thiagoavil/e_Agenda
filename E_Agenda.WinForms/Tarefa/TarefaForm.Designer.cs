@@ -52,6 +52,7 @@
             this.listBoxTarefaConcluida.Name = "listBoxTarefaConcluida";
             this.listBoxTarefaConcluida.Size = new System.Drawing.Size(459, 429);
             this.listBoxTarefaConcluida.TabIndex = 0;
+            this.listBoxTarefaConcluida.SelectedIndexChanged += new System.EventHandler(this.listBoxTarefaConcluida_SelectedIndexChanged);
             // 
             // buttonAdicionarTarefa
             // 

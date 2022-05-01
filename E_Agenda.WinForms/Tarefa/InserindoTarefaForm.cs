@@ -19,10 +19,11 @@ namespace E_Agenda.WinForms
         {
             InitializeComponent();
             this.tarefa = tarefa;
-
+            
+                
             if (tarefa != null)
             {
-                textBoxTitulo.Text = tarefa.titulo;
+                textBoxTitulo.Text = tarefa.Titulo;
 
                 if (tarefa.Prioridade == "Alta")
                 {
@@ -30,11 +31,11 @@ namespace E_Agenda.WinForms
                 }
                 else if (tarefa.Prioridade == "Media")
                 {
-                    radioButtonAlta.Checked = true;
+                    radioButtonMedia.Checked = true;
                 }
                 else
                 {
-                    radioButtonAlta.Checked = true;
+                    radioButtonBaixa.Checked = true;
                 }
             }
         }
@@ -42,8 +43,8 @@ namespace E_Agenda.WinForms
         private void btnGravar_Click(object sender, EventArgs e)
         {
 
-            tarefa.titulo = textBoxTitulo.Text;
-            tarefa.dataDeCriacao = DateTime.Now;
+            tarefa.Titulo = textBoxTitulo.Text;
+            tarefa.DataDeCriacao = DateTime.Now;
             
 
             if (radioButtonAlta.Checked == true)

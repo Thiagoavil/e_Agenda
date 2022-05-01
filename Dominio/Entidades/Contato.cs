@@ -47,6 +47,9 @@ namespace Dominio
             if (string.IsNullOrEmpty(empresa))
                 sb.AppendLine("O nome da Empresa não pode estar vazio");
 
+            if (sb.Length == 0)
+                sb.Append("REGISTRO_VALIDO");
+
             return sb.ToString();
         }
 

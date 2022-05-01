@@ -10,49 +10,36 @@ namespace Dominio
     {
         private List<Item> itens = new List<Item>();
 
-        public decimal percentual { get; set; }
+        public decimal Percentual { get; set; }
         public string Prioridade { get; set; }  
-        public string titulo { get; set; }
-        public DateTime dataDeCriacao { get; set; }
-        public DateTime?  dataDeConclusao { get; set; }
-        public List<Item> listaDeItens { get { return itens; } }
-
-        public Tarefa(int n, string t) : this()
-        {
-            id = n;
-            titulo = t;
-            dataDeConclusao = null;
-        }
+        public string Titulo { get; set; }
+        public DateTime DataDeCriacao { get; set; }
+        public DateTime?  DataDeConclusao { get; set; }
+        public List<Item> ListaDeItens { get { return itens; } }
+              
 
         public Tarefa()
         {
-            dataDeCriacao = DateTime.Now;
+            DataDeCriacao = DateTime.Now;
         }
                         
         public override string ToString()
         {
-            var percentual = CalcularPercentualConcluido();
+            Percentual = CalcularPercentualConcluido();
 
-            if (dataDeConclusao.HasValue)
+            if (DataDeConclusao.HasValue)
             {
+                return $"ID: {id}, Título: {Titulo}, Percentual: {Percentual}, " +
+                    $"Concluída: {DataDeConclusao.Value.ToShortDateString()}";
 
-
-                return
-                    "ID: " + id + Environment.NewLine +
-                    "Titulo: " + titulo + Environment.NewLine +
-                    "Pecentual: " + Math.Round(percentual, 1)+Environment.NewLine+
-                    "Concluida: " + dataDeConclusao.Value.ToShortDateString();
-                
             }
 
-            return "ID: " + id + Environment.NewLine +
-                    "Titulo: " + titulo + Environment.NewLine +
-                    "Pecentual Completo: " + Math.Round(percentual, 1);
+            return $"ID: {id}, Título: {Titulo}, Percentual: {Percentual}";
         }
               
         public void AdicionarItem(Item item)
         {
-            if (listaDeItens.Exists(x => x.Equals(item)) == false)
+            if (ListaDeItens.Exists(x => x.Equals(item)) == false)
                 itens.Add(item);
         }
 
@@ -62,10 +49,10 @@ namespace Dominio
 
             itemTarefa?.Concluir();
 
-            percentual = CalcularPercentualConcluido();
+            Percentual = CalcularPercentualConcluido();
 
-            if (percentual == 100)
-                dataDeConclusao = DateTime.Now;
+            if (Percentual == 100)
+                DataDeConclusao = DateTime.Now;
         }
 
         public void MarcarPendente(Item item)
@@ -91,11 +78,14 @@ namespace Dominio
         {
             StringBuilder sb = new StringBuilder();
 
-            if (string.IsNullOrEmpty(titulo))
+            if (string.IsNullOrEmpty(Titulo))
                 sb.AppendLine("É necessário ter um titulo!");
 
             if (Prioridade==null)
                 sb.AppendLine("A prioridade tem que ser selecionada!");
+           
+            if (sb.Length == 0)
+                sb.Append("REGISTRO_VALIDO");
 
             return sb.ToString();
         }
