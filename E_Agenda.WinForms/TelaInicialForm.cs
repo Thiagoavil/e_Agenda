@@ -1,5 +1,4 @@
 ﻿using System;
-using Dominio.Entidades;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -45,7 +44,7 @@ namespace E_Agenda.WinForms
         {
             this.Hide();
 
-            TarefaForm tela = new ();
+            TarefaForm tela = new(repositorioTarefa);
 
             DialogResult resultado = tela.ShowDialog();
 
@@ -57,6 +56,8 @@ namespace E_Agenda.WinForms
 
         private void buttonAcessarCompromisso_Click(object sender, EventArgs e)
         {
+            this.Hide();
+
             CompromissoForm tela = new ();
 
             DialogResult resultado = tela.ShowDialog();

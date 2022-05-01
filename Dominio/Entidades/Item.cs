@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Dominio.Entidades
+namespace Dominio
 {
-    public class Item 
+    public class Item : EntidadeBase
     {
         public string Titulo { get; set; }
         public bool itemConcluido { get; set; }
@@ -26,6 +26,15 @@ namespace Dominio.Entidades
         {
             itemConcluido = false;
         }
+        public override string Validar()
+        {
+            StringBuilder sb = new StringBuilder();
 
+
+            if (string.IsNullOrEmpty(Titulo))
+                sb.AppendLine("É necessário ter um titulo!");
+
+            return sb.ToString();
+        }
     }
 }

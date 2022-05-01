@@ -52,7 +52,6 @@
             this.listBoxTarefaConcluida.Name = "listBoxTarefaConcluida";
             this.listBoxTarefaConcluida.Size = new System.Drawing.Size(459, 429);
             this.listBoxTarefaConcluida.TabIndex = 0;
-            this.listBoxTarefaConcluida.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // buttonAdicionarTarefa
             // 
@@ -63,6 +62,7 @@
             this.buttonAdicionarTarefa.TabIndex = 1;
             this.buttonAdicionarTarefa.Text = "Adicionar Tarefa";
             this.buttonAdicionarTarefa.UseVisualStyleBackColor = false;
+            this.buttonAdicionarTarefa.Click += new System.EventHandler(this.btnAdicionarTarefa_Click);
             // 
             // buttonEditarTarefa
             // 
@@ -73,7 +73,7 @@
             this.buttonEditarTarefa.TabIndex = 2;
             this.buttonEditarTarefa.Text = "Editar Tarefa";
             this.buttonEditarTarefa.UseVisualStyleBackColor = false;
-            this.buttonEditarTarefa.Click += new System.EventHandler(this.button2_Click);
+            this.buttonEditarTarefa.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // buttonExcluirTarefa
             // 
@@ -158,6 +158,7 @@
             this.listBoxTarefaIncompletas.Name = "listBoxTarefaIncompletas";
             this.listBoxTarefaIncompletas.Size = new System.Drawing.Size(459, 429);
             this.listBoxTarefaIncompletas.TabIndex = 1;
+            this.listBoxTarefaIncompletas.SelectedIndexChanged += new System.EventHandler(this.listBoxTarefaIncompletas_SelectedIndexChanged);
             // 
             // TarefaForm
             // 

@@ -8,10 +8,10 @@ namespace Dominio
 {
     public abstract class  EntidadeBase
     {
-        public int numero;
+        public int id;
 
 
-        
+        public abstract string Validar();
         public abstract string ToString();
 
     }

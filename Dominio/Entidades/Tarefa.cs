@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Dominio.Entidades
+namespace Dominio
 {
     public class Tarefa : EntidadeBase
     {
         private List<Item> itens = new List<Item>();
 
-
+        public decimal percentual { get; set; }
+        public string Prioridade { get; set; }  
         public string titulo { get; set; }
         public DateTime dataDeCriacao { get; set; }
         public DateTime?  dataDeConclusao { get; set; }
@@ -18,7 +19,7 @@ namespace Dominio.Entidades
 
         public Tarefa(int n, string t) : this()
         {
-            numero = n;
+            id = n;
             titulo = t;
             dataDeConclusao = null;
         }
@@ -37,14 +38,14 @@ namespace Dominio.Entidades
 
 
                 return
-                    "Numero: " + numero + Environment.NewLine +
+                    "ID: " + id + Environment.NewLine +
                     "Titulo: " + titulo + Environment.NewLine +
                     "Pecentual: " + Math.Round(percentual, 1)+Environment.NewLine+
                     "Concluida: " + dataDeConclusao.Value.ToShortDateString();
                 
             }
 
-            return "Numero: " + numero + Environment.NewLine +
+            return "ID: " + id + Environment.NewLine +
                     "Titulo: " + titulo + Environment.NewLine +
                     "Pecentual Completo: " + Math.Round(percentual, 1);
         }
@@ -61,7 +62,7 @@ namespace Dominio.Entidades
 
             itemTarefa?.Concluir();
 
-            var percentual = CalcularPercentualConcluido();
+            percentual = CalcularPercentualConcluido();
 
             if (percentual == 100)
                 dataDeConclusao = DateTime.Now;
@@ -85,6 +86,19 @@ namespace Dominio.Entidades
 
             return Math.Round(percentualConcluido, 2);
         }
-                
+
+        public override string Validar()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            if (string.IsNullOrEmpty(titulo))
+                sb.AppendLine("É necessário ter um titulo!");
+
+            if (Prioridade==null)
+                sb.AppendLine("A prioridade tem que ser selecionada!");
+
+            return sb.ToString();
+        }
+
     }
 }

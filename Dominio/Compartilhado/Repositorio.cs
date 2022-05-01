@@ -14,29 +14,28 @@ namespace Dominio
 
         public virtual string Inserir(T entidade)
         {
-            entidade.numero = ++contadorNumero;
+            string resultado = entidade.Validar();
+           
+            if (resultado != "REGISTRO_VALIDO")
+                return resultado;
+
+            entidade.id = ++contadorNumero;
 
             registros.Add(entidade);
-
             return "REGISTRO_VALIDO";
         }
 
-        public bool Editar(Predicate<T> condicao, T novaEntidade)
+        public string Editar(T novoRegistro, T antigoRegistro)
         {
-            foreach (T entidade in registros)
-            {
-                if (condicao(entidade))
-                {
-                    novaEntidade.numero = entidade.numero;
+            string resultado = novoRegistro.Validar();
 
-                    int posicaoParaEditar = registros.IndexOf(entidade);
-                    registros[posicaoParaEditar] = novaEntidade;
+            if (resultado != "REGISTRO_VALIDO")
+                return resultado;
 
-                    return true;
-                }
-            }
-
-            return false;
+            int indice = registros.FindIndex(x => x.id == antigoRegistro.id);
+            registros[indice] = novoRegistro;
+            
+            return "REGISTRO_VALIDO";
         }
 
         public bool Excluir(Predicate<T> condicao)
