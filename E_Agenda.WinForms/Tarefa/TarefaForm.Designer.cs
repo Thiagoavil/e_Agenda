@@ -96,6 +96,7 @@
             this.buttonMarcarItems.TabIndex = 7;
             this.buttonMarcarItems.Text = "Marcar/Desmarcar items";
             this.buttonMarcarItems.UseVisualStyleBackColor = false;
+            this.buttonMarcarItems.Click += new System.EventHandler(this.buttonMarcarItems_Click);
             // 
             // buttonAdicionarItems
             // 
@@ -106,6 +107,7 @@
             this.buttonAdicionarItems.TabIndex = 6;
             this.buttonAdicionarItems.Text = "Adicionar items";
             this.buttonAdicionarItems.UseVisualStyleBackColor = false;
+            this.buttonAdicionarItems.Click += new System.EventHandler(this.buttonAdicionarItems_Click);
             // 
             // buttonVoltar
             // 

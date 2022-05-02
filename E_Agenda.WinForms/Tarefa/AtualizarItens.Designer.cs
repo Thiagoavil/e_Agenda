@@ -32,7 +32,7 @@
             this.btnGravar = new System.Windows.Forms.Button();
             this.labelTituloTarefa = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.listItensTarefa = new System.Windows.Forms.CheckedListBox();
+            this.listBoxItensTarefa = new System.Windows.Forms.CheckedListBox();
             this.SuspendLayout();
             // 
             // btnCancelar
@@ -78,15 +78,16 @@
             this.label2.TabIndex = 19;
             this.label2.Text = "Tarefa:";
             // 
-            // listItensTarefa
+            // listBoxItensTarefa
             // 
-            this.listItensTarefa.CheckOnClick = true;
-            this.listItensTarefa.FormattingEnabled = true;
-            this.listItensTarefa.Location = new System.Drawing.Point(44, 85);
-            this.listItensTarefa.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.listItensTarefa.Name = "listItensTarefa";
-            this.listItensTarefa.Size = new System.Drawing.Size(400, 268);
-            this.listItensTarefa.TabIndex = 18;
+            this.listBoxItensTarefa.CheckOnClick = true;
+            this.listBoxItensTarefa.FormattingEnabled = true;
+            this.listBoxItensTarefa.Location = new System.Drawing.Point(44, 85);
+            this.listBoxItensTarefa.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.listBoxItensTarefa.Name = "listBoxItensTarefa";
+            this.listBoxItensTarefa.Size = new System.Drawing.Size(400, 268);
+            this.listBoxItensTarefa.TabIndex = 18;
+            this.listBoxItensTarefa.SelectedIndexChanged += new System.EventHandler(this.listItensTarefa_SelectedIndexChanged);
             // 
             // AtualizarItens
             // 
@@ -98,7 +99,7 @@
             this.Controls.Add(this.btnGravar);
             this.Controls.Add(this.labelTituloTarefa);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.listItensTarefa);
+            this.Controls.Add(this.listBoxItensTarefa);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AtualizarItens";
@@ -116,6 +117,6 @@
         private System.Windows.Forms.Button btnGravar;
         private System.Windows.Forms.Label labelTituloTarefa;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.CheckedListBox listItensTarefa;
+        private System.Windows.Forms.CheckedListBox listBoxItensTarefa;
     }
 }

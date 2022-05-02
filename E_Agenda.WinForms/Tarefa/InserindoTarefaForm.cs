@@ -14,10 +14,12 @@ namespace E_Agenda.WinForms
     public partial class InserindoTarefaForm : Form
     {
         public Tarefa tarefa;
+        public Repositorio<Tarefa> repositoriotarefa;
 
-        public InserindoTarefaForm()
+        public InserindoTarefaForm(Repositorio<Tarefa> repositoriotarefa)
         {
             InitializeComponent();
+            this.repositoriotarefa=repositoriotarefa;
         }
         public Tarefa Tarefa
         {
@@ -46,27 +48,41 @@ namespace E_Agenda.WinForms
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
+            List<string> Nomes = repositoriotarefa.SelecionarTodos().Select(x => x.Titulo).ToList();
 
-            tarefa.Titulo = textBoxTitulo.Text;
+            if (Nomes.Count == 0 || Nomes.Contains(textBoxTitulo.Text) == false)
+            {
+                tarefa.Titulo = textBoxTitulo.Text;
 
-            if (radioButtonAlta.Checked == true)
-            {
-                tarefa.Prioridade = "Alta";
-                tarefa.prioridade = 1;
-            }
-            else if (radioButtonAlta.Checked == true)
-            {
-                tarefa.Prioridade = "Media";
-                tarefa.prioridade = 2;
+                if (radioButtonAlta.Checked == true)
+                {
+                    tarefa.Prioridade = "Alta";
+                    tarefa.prioridade = 3;
+                }
+                else if (radioButtonMedia.Checked == true)
+                {
+                    tarefa.Prioridade = "Media";
+                    tarefa.prioridade = 2;
+                }
+                else
+                {
+                    tarefa.Prioridade = "Baixa";
+                    tarefa.prioridade = 1;
+                }
             }
             else
             {
-                tarefa.Prioridade = "Baixa";
-                tarefa.prioridade = 3;
+                MessageBox.Show("Nome Já Existente", "Tarefa", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                
             }
         }
 
         private void InserindoTarefaForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxTitulo_TextChanged(object sender, EventArgs e)
         {
 
         }

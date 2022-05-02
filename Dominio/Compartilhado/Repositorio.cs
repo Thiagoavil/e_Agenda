@@ -75,9 +75,8 @@ namespace Dominio
         {
             int idatualiazado = 0;
             foreach (T registro in registros)
-            {
                 registro.id=++idatualiazado;
-            }
+          
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    public class Tarefa : EntidadeBase
+    public class Tarefa : EntidadeBase,IEnumerable
     {
         private List<Item> itens = new List<Item>();
 
@@ -92,5 +93,23 @@ namespace Dominio
             return sb.ToString();
         }
 
+        public IEnumerator GetEnumerator()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AtualizarItens(List<Item> itensConcluidos, List<Item> itensPendentes)
+        {
+            foreach (var item in itensConcluidos)
+            {
+                ConcluirItem(item);
+            }
+
+            foreach (var item in itensPendentes)
+            {
+                MarcarPendente(item);
+            }
+
+        }
     }
 }

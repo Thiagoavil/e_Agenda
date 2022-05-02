@@ -47,7 +47,6 @@
             this.label1.Size = new System.Drawing.Size(64, 23);
             this.label1.TabIndex = 0;
             this.label1.Text = "Tarefa :";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // labelTarefa
             // 
@@ -58,7 +57,6 @@
             this.labelTarefa.Size = new System.Drawing.Size(65, 23);
             this.labelTarefa.TabIndex = 1;
             this.labelTarefa.Text = "[Tarefa]";
-            this.labelTarefa.Click += new System.EventHandler(this.label2_Click);
             // 
             // label2
             // 
@@ -69,7 +67,6 @@
             this.label2.Size = new System.Drawing.Size(62, 23);
             this.label2.TabIndex = 2;
             this.label2.Text = "Titulo :";
-            this.label2.Click += new System.EventHandler(this.label2_Click_1);
             // 
             // textBoxTitulo
             // 
@@ -88,6 +85,7 @@
             this.buttonAdicionar.TabIndex = 4;
             this.buttonAdicionar.Text = "Adicionar";
             this.buttonAdicionar.UseVisualStyleBackColor = true;
+            this.buttonAdicionar.Click += new System.EventHandler(this.buttonAdicionar_Click);
             // 
             // listBoxItems
             // 
@@ -100,12 +98,13 @@
             // 
             // buttonGravar
             // 
-            this.buttonGravar.Location = new System.Drawing.Point(327, 397);
+            this.buttonGravar.Location = new System.Drawing.Point(335, 397);
             this.buttonGravar.Name = "buttonGravar";
             this.buttonGravar.Size = new System.Drawing.Size(94, 41);
             this.buttonGravar.TabIndex = 6;
             this.buttonGravar.Text = "Gravar";
             this.buttonGravar.UseVisualStyleBackColor = true;
+            this.buttonGravar.Click += new System.EventHandler(this.buttonGravar_Click);
             // 
             // buttonCancelar
             // 
@@ -115,6 +114,7 @@
             this.buttonCancelar.TabIndex = 7;
             this.buttonCancelar.Text = "Cancelar";
             this.buttonCancelar.UseVisualStyleBackColor = true;
+            this.buttonCancelar.Click += new System.EventHandler(this.buttonCancelar_Click);
             // 
             // InserirItems
             // 
@@ -137,6 +137,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Inserir Items";
+            this.Load += new System.EventHandler(this.InserirItems_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -54,6 +54,7 @@
             this.textBoxTitulo.Name = "textBoxTitulo";
             this.textBoxTitulo.Size = new System.Drawing.Size(125, 30);
             this.textBoxTitulo.TabIndex = 1;
+            this.textBoxTitulo.TextChanged += new System.EventHandler(this.textBoxTitulo_TextChanged);
             // 
             // radioButtonAlta
             // 

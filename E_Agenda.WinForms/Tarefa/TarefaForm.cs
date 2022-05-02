@@ -25,7 +25,7 @@ namespace E_Agenda.WinForms
         private void btnAdicionarTarefa_Click(object sender, EventArgs e)
         {
 
-            InserindoTarefaForm tela = new();
+            InserindoTarefaForm tela = new(_repositorioTarefa);
             tela.Tarefa=new Tarefa();
 
             DialogResult res = tela.ShowDialog();
@@ -67,7 +67,7 @@ namespace E_Agenda.WinForms
             novaTarefa.DataDeConclusao = tarefaSelecionada.DataDeConclusao;
             novaTarefa.Percentual = tarefaSelecionada.Percentual;
             
-            InserindoTarefaForm tela = new();
+            InserindoTarefaForm tela = new(_repositorioTarefa);
             tela.Tarefa = novaTarefa;
            
 
@@ -132,24 +132,21 @@ namespace E_Agenda.WinForms
         {
             List<Tarefa> tarefasConcluidas =
                 _repositorioTarefa.Filtrar(
-                    x => x.CalcularPercentualConcluido() == 100).ToList();
+                    x => x.CalcularPercentualConcluido() == 100).
+                    OrderByDescending(x => x.prioridade).ThenBy(x => x.Titulo).ToList();
 
             listBoxTarefaConcluida.Items.Clear();
 
-            tarefasConcluidas.OrderBy(x => x.prioridade);
-            
             foreach (Tarefa t in tarefasConcluidas)
             {
                 listBoxTarefaConcluida.Items.Add(t);
             }
 
-           
 
-            List<Tarefa> tarefasPendentes = _repositorioTarefa.Filtrar(x => x.CalcularPercentualConcluido() < 100).ToList();
+            List<Tarefa> tarefasPendentes = _repositorioTarefa.Filtrar(x => x.CalcularPercentualConcluido() < 100).
+                OrderByDescending(x=>x.prioridade).ThenBy(x => x.Titulo).ToList();
 
             listBoxTarefaIncompletas.Items.Clear();
-
-            tarefasPendentes.OrderBy(x => x.prioridade);
 
             foreach (Tarefa t in tarefasPendentes)
             {
@@ -182,6 +179,60 @@ namespace E_Agenda.WinForms
             }
             else
                 return true;
+        }
+
+        private void buttonAdicionarItems_Click(object sender, EventArgs e)
+        {
+            Tarefa tarefaSelecionadaIncompleta = (Tarefa)listBoxTarefaIncompletas.SelectedItem;
+
+            Tarefa tarefaSelecionadaConcluida = (Tarefa)listBoxTarefaConcluida.SelectedItem;
+
+            if (tarefaSelecionadaIncompleta == null && tarefaSelecionadaConcluida == null)
+            {
+                MessageBox.Show("Selecione uma tarefa primeiro",
+                "Adicionando Items", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+            Tarefa TarefaSelecionada=new Tarefa();
+
+            if (tarefaSelecionadaIncompleta == null)
+                TarefaSelecionada = tarefaSelecionadaConcluida;
+            else
+                TarefaSelecionada = tarefaSelecionadaIncompleta;
+
+            InserirItems tela = new(TarefaSelecionada);
+        }
+
+        private void buttonMarcarItems_Click(object sender, EventArgs e)
+        {
+            Tarefa tarefaSelecionadaIncompleta = (Tarefa)listBoxTarefaIncompletas.SelectedItem;
+
+            Tarefa tarefaSelecionadaConcluida = (Tarefa)listBoxTarefaConcluida.SelectedItem;
+
+            if (tarefaSelecionadaIncompleta == null && tarefaSelecionadaConcluida == null)
+            {
+                MessageBox.Show("Selecione uma tarefa primeiro",
+                "Adicionando Items", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+            Tarefa TarefaSelecionada = new Tarefa();
+
+            if (tarefaSelecionadaIncompleta == null)
+                TarefaSelecionada = tarefaSelecionadaConcluida;
+            else
+                TarefaSelecionada = tarefaSelecionadaIncompleta;
+
+            AtualizarItens tela = new(TarefaSelecionada);
+
+            if(tela.ShowDialog()==DialogResult.OK)
+            {
+                List<Item> itensConcluidos = tela.ItensConcluidos;
+
+                List<Item> itensPendentes = tela.ItensPendentes;
+
+                TarefaSelecionada.AtualizarItens( itensConcluidos, itensPendentes);
+                CarregarTarefas();
+            }
         }
     }
 
