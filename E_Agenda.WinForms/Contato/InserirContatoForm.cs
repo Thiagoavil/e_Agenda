@@ -30,7 +30,14 @@ namespace E_Agenda.WinForms
             set
             {
                 contato = value;
-                
+
+                textBoxNome.Text = contato.nome;
+                textBoxEmail.Text = contato.email;
+                maskedTextBoxTelefone.Text = contato.telefone;
+                textBoxEmpresa.Text = contato.empresa;
+                textBoxCargo.Text = contato.cargo;
+
+
             }
         }
 
@@ -55,15 +62,32 @@ namespace E_Agenda.WinForms
             List<string> Email = repositorio.SelecionarTodos().Select(x=>x.email).ToList();
             List<string> telefone = repositorio.SelecionarTodos().Select(x => x.telefone).ToList();
 
-            if (Nomes.Count == 0 || Nomes.Contains(textBoxNome.Text) == false || Email.Contains(textBoxEmail.Text) ==false || telefone.Contains(maskedTextBoxTelefone.Text)==false)
+            if (Nomes.Count == 0 || Nomes.Contains(textBoxNome.Text) == false )
             {
                 contato.nome = textBoxNome.Text;
-                contato.email=textBoxEmail.Text;
-                contato.telefone = maskedTextBoxTelefone.Text;
-                contato.empresa = textBoxEmpresa.Text;
-                contato.cargo = textBoxCargo.Text;
-                
+               
             }
+            if (Email.Count == 0 || Email.Contains(textBoxEmail.Text) == false)
+            {
+                contato.email = textBoxEmail.Text;
+            }
+            if (telefone.Count == 0 || telefone.Contains(maskedTextBoxTelefone.Text) == false)
+            {
+                contato.telefone = maskedTextBoxTelefone.Text;
+
+            }
+            contato.empresa = textBoxEmpresa.Text;
+            contato.cargo = textBoxCargo.Text;
+
+            //if (textBoxEmpresa.Text == null)
+            //    contato.empresa = "";
+            //else
+            //    contato.empresa = textBoxEmpresa.Text;
+
+            //if (textBoxCargo == null)
+            //    contato.cargo = "";
+            //else
+            //    contato.cargo = textBoxCargo.Text;
         }
     }
 }

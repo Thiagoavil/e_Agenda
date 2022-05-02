@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Dominio
@@ -14,8 +15,9 @@ namespace Dominio
         public string email { get; set; }
         public string telefone { get; set; }
         public string empresa { get; set; }
-        public string cargo{ get; set; }
-        
+        public string cargo { get; set; }
+
+
 
         public Contato()
         {
@@ -24,12 +26,22 @@ namespace Dominio
 
         public override string ToString()
         {
-            return
-                "Nome: " + nome + Environment.NewLine +
-                "Email: " + email + Environment.NewLine +
-                "Telefone: " + telefone + Environment.NewLine +
-                "Empresa: " + empresa + Environment.NewLine +
-                "Cargo: " + cargo + Environment.NewLine;
+            if(empresa=="" && cargo=="")
+            {
+                return $"ID: {id} Nome: {nome} Email: {email} Telefone: {telefone} ";
+            }
+            else if(cargo=="")
+            {
+                return $"ID: {id} Nome: {nome} Email: {email} Telefone: {telefone} Empresa: {empresa} ";
+            }
+            else if(empresa=="")
+            {
+                return $"ID: {id} Nome: {nome} Email: {email} Telefone: {telefone} Cargo: {cargo} ";
+            }
+
+            return $"ID: {id} Nome: {nome} Email: {email} Telefone: {telefone} Empresa: {empresa} " +
+                $"Cargo:{cargo}";
+
         }
         public override string Validar()
         {
@@ -42,11 +54,9 @@ namespace Dominio
                 sb.AppendLine("O Email não pode estar vazio");
             if (!e.IsValid(email))
                 sb.AppendLine("Email inválido");
-            if (string.IsNullOrEmpty(telefone) || telefone.Length < 9)
-                sb.AppendLine("O Telefone não pode estar vazio, e deve conter pelo menos 9 DIGITOS");
-            if (string.IsNullOrEmpty(empresa))
-                sb.AppendLine("O nome da Empresa não pode estar vazio");
-
+            if (string.IsNullOrEmpty(telefone))
+                sb.AppendLine("O Telefone não pode estar vazio");
+                
             if (sb.Length == 0)
                 sb.Append("REGISTRO_VALIDO");
 

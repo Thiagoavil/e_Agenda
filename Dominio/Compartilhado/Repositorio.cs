@@ -31,7 +31,7 @@ namespace Dominio
             if (resultado != "REGISTRO_VALIDO")
                 return resultado;
 
-            int indice = registros.FindIndex(x => x.id == antigoRegistro.id);
+            int indice = (registros.FindIndex(x => x.id == antigoRegistro.id));
             registros[indice] = novoRegistro;
             return "REGISTRO_VALIDO";
         }

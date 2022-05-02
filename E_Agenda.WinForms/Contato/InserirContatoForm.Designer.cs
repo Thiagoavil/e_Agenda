@@ -119,7 +119,7 @@
             // maskedTextBoxTelefone
             // 
             this.maskedTextBoxTelefone.Location = new System.Drawing.Point(22, 162);
-            this.maskedTextBoxTelefone.Mask = "(99)0 000-0000";
+            this.maskedTextBoxTelefone.Mask = "(99)0 0000-0000";
             this.maskedTextBoxTelefone.Name = "maskedTextBoxTelefone";
             this.maskedTextBoxTelefone.Size = new System.Drawing.Size(326, 27);
             this.maskedTextBoxTelefone.TabIndex = 10;

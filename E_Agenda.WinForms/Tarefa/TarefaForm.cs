@@ -75,7 +75,7 @@ namespace E_Agenda.WinForms
 
             if (res == DialogResult.OK)
             {
-                string status = _repositorioTarefa.Editar(tela.Tarefa,tarefaSelecionada);
+                string status = _repositorioTarefa.Editar(tela.tarefa,tarefaSelecionada);
                 
                 if (status == "REGISTRO_VALIDO")
                 {

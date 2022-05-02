@@ -19,6 +19,7 @@ namespace E_Agenda.WinForms
         {
             InitializeComponent();
             this._repositorioContato = repositorio;
+            CarregarContatos();
         }
         private void buttonAdicionarContato_Click(object sender, EventArgs e)
         {
@@ -52,7 +53,8 @@ namespace E_Agenda.WinForms
                 return;
 
             Contato novoContato = new();
-            
+
+            novoContato.id = ContatoSelecionado.id;
             novoContato.nome = ContatoSelecionado.nome;
             novoContato.email = ContatoSelecionado.email;
             novoContato.telefone = ContatoSelecionado.telefone;
@@ -68,7 +70,7 @@ namespace E_Agenda.WinForms
 
             if (res == DialogResult.OK)
             {
-                string status = _repositorioContato.Editar(novoContato, ContatoSelecionado);
+                string status = _repositorioContato.Editar(tela.contato, ContatoSelecionado);
 
                 if (status == "REGISTRO_VALIDO")
                 {
