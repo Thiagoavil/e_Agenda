@@ -50,7 +50,7 @@
             this.listBoxTarefaConcluida.ItemHeight = 25;
             this.listBoxTarefaConcluida.Location = new System.Drawing.Point(0, 0);
             this.listBoxTarefaConcluida.Name = "listBoxTarefaConcluida";
-            this.listBoxTarefaConcluida.Size = new System.Drawing.Size(459, 429);
+            this.listBoxTarefaConcluida.Size = new System.Drawing.Size(629, 429);
             this.listBoxTarefaConcluida.TabIndex = 0;
             this.listBoxTarefaConcluida.SelectedIndexChanged += new System.EventHandler(this.listBoxTarefaConcluida_SelectedIndexChanged);
             // 
@@ -128,7 +128,7 @@
             this.tabControl1.Location = new System.Drawing.Point(257, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(467, 468);
+            this.tabControl1.Size = new System.Drawing.Size(637, 468);
             this.tabControl1.TabIndex = 9;
             // 
             // tabPage1
@@ -137,7 +137,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 34);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(459, 430);
+            this.tabPage1.Size = new System.Drawing.Size(629, 430);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Concluidas";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -148,10 +148,11 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 34);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(459, 430);
+            this.tabPage2.Size = new System.Drawing.Size(629, 430);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Incompletas";
             this.tabPage2.UseVisualStyleBackColor = true;
+            this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
             // 
             // listBoxTarefaIncompletas
             // 
@@ -159,7 +160,7 @@
             this.listBoxTarefaIncompletas.ItemHeight = 25;
             this.listBoxTarefaIncompletas.Location = new System.Drawing.Point(0, 1);
             this.listBoxTarefaIncompletas.Name = "listBoxTarefaIncompletas";
-            this.listBoxTarefaIncompletas.Size = new System.Drawing.Size(459, 429);
+            this.listBoxTarefaIncompletas.Size = new System.Drawing.Size(629, 429);
             this.listBoxTarefaIncompletas.TabIndex = 1;
             this.listBoxTarefaIncompletas.SelectedIndexChanged += new System.EventHandler(this.listBoxTarefaIncompletas_SelectedIndexChanged);
             // 
@@ -185,6 +186,7 @@
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tarefa";
+            this.Load += new System.EventHandler(this.TarefaForm_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);

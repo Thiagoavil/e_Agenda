@@ -41,5 +41,10 @@ namespace E_Agenda.WinForms.Compromisso
         {
 
         }
+
+        private void CriandoCompromissoForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

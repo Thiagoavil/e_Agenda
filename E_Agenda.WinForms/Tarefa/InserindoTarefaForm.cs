@@ -72,8 +72,7 @@ namespace E_Agenda.WinForms
             }
             else
             {
-                MessageBox.Show("Nome Já Existente", "Tarefa", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                
+                tarefa.Titulo = "";
             }
         }
 

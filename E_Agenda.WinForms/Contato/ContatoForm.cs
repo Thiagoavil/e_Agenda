@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dominio;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,7 @@ namespace E_Agenda.WinForms
 {
     public partial class ContatoForm : Form
     {
+        Repositorio<Contato> repositoContato;
         public ContatoForm()
         {
             InitializeComponent();
@@ -22,7 +24,7 @@ namespace E_Agenda.WinForms
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void buttonEditar_Click(object sender, EventArgs e)
         {
 
         }
@@ -31,6 +33,26 @@ namespace E_Agenda.WinForms
         {
             
             Close();
+        }
+
+        private void buttonAgruparPorCargo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonAgruparPorID_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonAdicionarContato_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonExcluirContato_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

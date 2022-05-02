@@ -40,10 +40,11 @@ namespace Dominio
             return $" ID: { id}, Título: {Titulo}, Percentual: {Percentual} ";
         }
               
-        public void AdicionarItem(Item item)
+       
+        public void AdicionarItemNaTarefa(Item items)
         {
-            if (ListaDeItens.Exists(x => x.Equals(item)) == false)
-                itens.Add(item);
+            if (ListaDeItens.Exists(x => x.Equals(items)) == false)
+                itens.Add(items);
         }
 
         public void ConcluirItem(Item item)
@@ -80,6 +81,9 @@ namespace Dominio
         public override string Validar()
         {
             StringBuilder sb = new StringBuilder();
+
+            if(Titulo=="")
+                sb.AppendLine("Nome já Existe");
 
             if (string.IsNullOrEmpty(Titulo))
                 sb.AppendLine("É necessário ter um titulo!");

@@ -200,6 +200,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Criando Compromisso";
+            this.Load += new System.EventHandler(this.CriandoCompromissoForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

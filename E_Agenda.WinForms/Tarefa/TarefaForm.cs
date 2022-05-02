@@ -99,7 +99,7 @@ namespace E_Agenda.WinForms
             if (tarefaSelecionadaIncompleta == null && tarefaSelecionadaConcluida==null)
             {
                 MessageBox.Show("Selecione uma tarefa primeiro",
-                "Exclusão de Tarefas", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                "Exclusão de Tarefas", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -201,6 +201,20 @@ namespace E_Agenda.WinForms
                 TarefaSelecionada = tarefaSelecionadaIncompleta;
 
             InserirItems tela = new(TarefaSelecionada);
+
+           
+            if (tela.ShowDialog() == DialogResult.OK)
+            {
+                List<Item> itens = tela.ItensAdicionados;
+                
+                foreach (var item in itens)
+                {
+                    TarefaSelecionada.AdicionarItemNaTarefa(item);
+                }
+                
+
+                CarregarTarefas();
+            }
         }
 
         private void buttonMarcarItems_Click(object sender, EventArgs e)
@@ -233,6 +247,16 @@ namespace E_Agenda.WinForms
                 TarefaSelecionada.AtualizarItens( itensConcluidos, itensPendentes);
                 CarregarTarefas();
             }
+        }
+
+        private void tabPage2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TarefaForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 

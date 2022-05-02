@@ -46,16 +46,21 @@ namespace E_Agenda.WinForms
 
                 listBoxItems.Items.Add(itemTarefa);
             }
+            else
+            {
+                MessageBox.Show("Não pode Inserir Itens com o mesmo Nome","Itens",
+                    MessageBoxButtons.OK,MessageBoxIcon.Information);
+            }
         }
 
         private void buttonGravar_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void buttonCancelar_Click(object sender, EventArgs e)
         {
-
+            Close();
         }
 
         private void InserirItems_Load(object sender, EventArgs e)

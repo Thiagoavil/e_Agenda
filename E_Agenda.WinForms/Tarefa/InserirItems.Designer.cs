@@ -98,6 +98,7 @@
             // 
             // buttonGravar
             // 
+            this.buttonGravar.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.buttonGravar.Location = new System.Drawing.Point(335, 397);
             this.buttonGravar.Name = "buttonGravar";
             this.buttonGravar.Size = new System.Drawing.Size(94, 41);

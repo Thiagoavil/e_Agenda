@@ -9,11 +9,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Dominio;
 
+
 namespace E_Agenda.WinForms
 {
     public partial class TelaInicialForm : Form
     {
         Repositorio<Tarefa> repositorioTarefa;
+        Repositorio<Contato> repositorioContato;
+        Repositorio<Dominio.Compromisso> repositorioCompromisso;
 
         public TelaInicialForm()
         {
