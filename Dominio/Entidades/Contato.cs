@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -7,19 +8,18 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    public class Contato : EntidadeBase
+    public class Contato : EntidadeBase,IEnumerable
     {
-        string nome, email, telefone, empresa;
-        public string cargo;
-        public string Nome => nome;
+        public string nome{ get; set; }
+        public string email { get; set; }
+        public string telefone { get; set; }
+        public string empresa { get; set; }
+        public string cargo{ get; set; }
+        
 
-        public Contato(string nome, string email, string telefone, string empresa, string cargo)
+        public Contato()
         {
-            this.nome = nome;
-            this.email = email;
-            this.telefone = telefone;
-            this.empresa = empresa;
-            this.cargo = cargo;
+            
         }
 
         public override string ToString()
@@ -53,5 +53,9 @@ namespace Dominio
             return sb.ToString();
         }
 
+        public IEnumerator GetEnumerator()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

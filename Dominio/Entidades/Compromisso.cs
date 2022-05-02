@@ -30,7 +30,7 @@ namespace Dominio
         public override string ToString()
         {
             return
-                "Contato: " + contato.Nome + Environment.NewLine +
+                "Contato: " + contato.nome + Environment.NewLine +
                 "Data do compromisso: " + dataCompromisso + Environment.NewLine +
                 "Hora de Inicio: " + horarioDeInicio + Environment.NewLine +
                 "Hora de Fim: " + horarioDeFim + Environment.NewLine +

@@ -1,4 +1,4 @@
-﻿using E_Agenda.WinForms.Compromisso;
+﻿using Dominio;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,13 +9,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace E_Agenda.WinForms
+namespace E_Agenda.WinForms.ModuloCompromisso
 {
     public partial class CompromissoForm : Form
     {
-        public CompromissoForm()
+        Repositorio<Compromisso> repositorioComromisso;
+        public CompromissoForm(Repositorio<Compromisso> repositorio)
         {
             InitializeComponent();
+            this.repositorioComromisso = repositorio;
         }
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {

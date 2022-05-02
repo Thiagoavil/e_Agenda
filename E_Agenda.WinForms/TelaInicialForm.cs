@@ -8,27 +8,29 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Dominio;
-
+using E_Agenda.WinForms.ModuloCompromisso;
 
 namespace E_Agenda.WinForms
 {
     public partial class TelaInicialForm : Form
     {
-        Repositorio<Tarefa> repositorioTarefa;
-        Repositorio<Contato> repositorioContato;
-        Repositorio<Dominio.Compromisso> repositorioCompromisso;
+        private Repositorio<Tarefa> repositorioTarefa;
+        private Repositorio<Contato> repositorioContato;
+        private Repositorio<Compromisso> repositorioCompromisso;
 
         public TelaInicialForm()
         {
             InitializeComponent();
             repositorioTarefa = new Repositorio<Tarefa>();
+            repositorioContato = new Repositorio<Contato>();
+            repositorioCompromisso =new Repositorio<Compromisso>();
         }
 
         private void btnAcessarContatos_Click(object sender, EventArgs e)
         {
             this.Hide();
 
-            ContatoForm tela = new ();
+            ContatoForm tela = new (repositorioContato);
             
             DialogResult resultado = tela.ShowDialog();
 
@@ -61,7 +63,7 @@ namespace E_Agenda.WinForms
         {
             this.Hide();
 
-            CompromissoForm tela = new ();
+            CompromissoForm tela = new (repositorioCompromisso);
 
             DialogResult resultado = tela.ShowDialog();
 

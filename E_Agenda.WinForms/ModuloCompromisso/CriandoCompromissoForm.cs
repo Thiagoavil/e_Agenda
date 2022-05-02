@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace E_Agenda.WinForms.Compromisso
+namespace E_Agenda.WinForms.ModuloCompromisso
 {
     public partial class CriandoCompromissoForm : Form
     {

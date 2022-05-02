@@ -34,7 +34,7 @@
             this.buttonExcluirContato = new System.Windows.Forms.Button();
             this.buttonVoltar = new System.Windows.Forms.Button();
             this.buttonAgruparPorCargo = new System.Windows.Forms.Button();
-            this.buttonAgruparPorID = new System.Windows.Forms.Button();
+            this.buttonAgruparPorNome = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listBoxContatos
@@ -43,9 +43,8 @@
             this.listBoxContatos.ItemHeight = 25;
             this.listBoxContatos.Location = new System.Drawing.Point(157, 12);
             this.listBoxContatos.Name = "listBoxContatos";
-            this.listBoxContatos.Size = new System.Drawing.Size(529, 479);
+            this.listBoxContatos.Size = new System.Drawing.Size(737, 479);
             this.listBoxContatos.TabIndex = 0;
-            this.listBoxContatos.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // buttonAdicionarContato
             // 
@@ -104,16 +103,16 @@
             this.buttonAgruparPorCargo.UseVisualStyleBackColor = false;
             this.buttonAgruparPorCargo.Click += new System.EventHandler(this.buttonAgruparPorCargo_Click);
             // 
-            // buttonAgruparPorID
+            // buttonAgruparPorNome
             // 
-            this.buttonAgruparPorID.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonAgruparPorID.Location = new System.Drawing.Point(12, 392);
-            this.buttonAgruparPorID.Name = "buttonAgruparPorID";
-            this.buttonAgruparPorID.Size = new System.Drawing.Size(139, 79);
-            this.buttonAgruparPorID.TabIndex = 11;
-            this.buttonAgruparPorID.Text = "Agrupar por ID";
-            this.buttonAgruparPorID.UseVisualStyleBackColor = false;
-            this.buttonAgruparPorID.Click += new System.EventHandler(this.buttonAgruparPorID_Click);
+            this.buttonAgruparPorNome.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonAgruparPorNome.Location = new System.Drawing.Point(12, 392);
+            this.buttonAgruparPorNome.Name = "buttonAgruparPorNome";
+            this.buttonAgruparPorNome.Size = new System.Drawing.Size(139, 79);
+            this.buttonAgruparPorNome.TabIndex = 11;
+            this.buttonAgruparPorNome.Text = "Agrupar por Nome";
+            this.buttonAgruparPorNome.UseVisualStyleBackColor = false;
+            this.buttonAgruparPorNome.Click += new System.EventHandler(this.buttonAgruparPorNome_Click);
             // 
             // ContatoForm
             // 
@@ -121,7 +120,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1033, 504);
-            this.Controls.Add(this.buttonAgruparPorID);
+            this.Controls.Add(this.buttonAgruparPorNome);
             this.Controls.Add(this.buttonAgruparPorCargo);
             this.Controls.Add(this.buttonVoltar);
             this.Controls.Add(this.buttonExcluirContato);
@@ -137,6 +136,7 @@
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Contatos";
+            this.Load += new System.EventHandler(this.ContatoForm_Load);
             this.ResumeLayout(false);
 
         }
@@ -149,6 +149,6 @@
         private System.Windows.Forms.Button buttonExcluirContato;
         private System.Windows.Forms.Button buttonVoltar;
         private System.Windows.Forms.Button buttonAgruparPorCargo;
-        private System.Windows.Forms.Button buttonAgruparPorID;
+        private System.Windows.Forms.Button buttonAgruparPorNome;
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace E_Agenda.WinForms
+﻿namespace E_Agenda.WinForms.ModuloCompromisso
 {
     partial class CompromissoForm
     {
