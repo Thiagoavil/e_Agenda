@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    public class Tarefa : EntidadeBase,IEnumerable
+    public class Tarefa : EntidadeBase
     {
         private List<Item> itens = new List<Item>();
 
@@ -97,10 +97,6 @@ namespace Dominio
             return sb.ToString();
         }
 
-        public IEnumerator GetEnumerator()
-        {
-            throw new NotImplementedException();
-        }
 
         public void AtualizarItens(List<Item> itensConcluidos, List<Item> itensPendentes)
         {

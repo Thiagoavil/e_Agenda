@@ -160,6 +160,7 @@
             this.buttonFiltrar.TabIndex = 3;
             this.buttonFiltrar.Text = "Filtrar";
             this.buttonFiltrar.UseVisualStyleBackColor = true;
+            this.buttonFiltrar.Click += new System.EventHandler(this.buttonFiltrar_Click);
             // 
             // tabControlCompromissoPassado
             // 
@@ -235,7 +236,6 @@
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Compromisso";
-            this.Load += new System.EventHandler(this.Compromisso_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.tabControlCompromissoPassado.ResumeLayout(false);

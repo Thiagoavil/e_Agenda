@@ -1,4 +1,5 @@
 ﻿using Dominio;
+using Infra;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,12 +14,14 @@ namespace E_Agenda.WinForms
 {
     public partial class TarefaForm : Form
     {
+        private readonly JsonSerialization<Tarefa> jsonSerialization;
         Repositorio<Tarefa> _repositorioTarefa;
 
-        public TarefaForm(Repositorio<Tarefa> repositorio)
+        public TarefaForm(Repositorio<Tarefa> repositorio, JsonSerialization<Tarefa> jsonSerialization)
         {
-            InitializeComponent();
+            this.jsonSerialization = jsonSerialization;
             _repositorioTarefa = repositorio;
+            InitializeComponent();
             CarregarTarefas();
         }
 
@@ -205,14 +208,14 @@ namespace E_Agenda.WinForms
            
             if (tela.ShowDialog() == DialogResult.OK)
             {
+
                 List<Item> itens = tela.ItensAdicionados;
-                
+
                 foreach (var item in itens)
                 {
                     TarefaSelecionada.AdicionarItemNaTarefa(item);
                 }
-                
-
+                jsonSerialization.Save(_repositorioTarefa.SelecionarTodos());
                 CarregarTarefas();
             }
         }
@@ -245,6 +248,7 @@ namespace E_Agenda.WinForms
                 List<Item> itensPendentes = tela.ItensPendentes;
 
                 TarefaSelecionada.AtualizarItens( itensConcluidos, itensPendentes);
+                jsonSerialization.Save(_repositorioTarefa.SelecionarTodos());
                 CarregarTarefas();
             }
         }

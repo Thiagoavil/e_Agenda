@@ -14,11 +14,13 @@ namespace E_Agenda.WinForms
     public partial class ContatoForm : Form
     {
         Repositorio<Contato> _repositorioContato;
+        Repositorio<Compromisso> _repositorioCompromisso;
 
-        public ContatoForm(Repositorio<Contato> repositorio)
+        public ContatoForm(Repositorio<Contato> repositorio, Repositorio<Compromisso> repositorioCompromisso)
         {
             InitializeComponent();
             this._repositorioContato = repositorio;
+            this._repositorioCompromisso = repositorioCompromisso;
             CarregarContatos();
         }
         private void buttonAdicionarContato_Click(object sender, EventArgs e)

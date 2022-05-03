@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    public class Contato : EntidadeBase,IEnumerable
+    public class Contato : EntidadeBase
     {
         public string nome{ get; set; }
         public string email { get; set; }
@@ -65,10 +65,6 @@ namespace Dominio
 
             return sb.ToString();
         }
-
-        public IEnumerator GetEnumerator()
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

@@ -1,27 +1,31 @@
-﻿using System;
+﻿using Infra;
+using System;
 using System.Collections.Generic;
 
 namespace Dominio
 {
     public class Repositorio<T> where T : EntidadeBase
     {
+        private readonly ISerializator<T> _serializator;
         protected int contadorNumero;
         protected readonly List<T> registros;
-        public Repositorio()
+        public Repositorio(ISerializator<T> serializator)
         {
-            registros = new List<T>();
+            _serializator = serializator;
+            registros = serializator.Load();
         }
 
         public virtual string Inserir(T entidade)
         {
             string resultado = entidade.Validar();
-           
+
             if (resultado != "REGISTRO_VALIDO")
                 return resultado;
 
             entidade.id = ++contadorNumero;
 
             registros.Add(entidade);
+            _serializator.Save(registros);
             return "REGISTRO_VALIDO";
         }
 
@@ -33,13 +37,17 @@ namespace Dominio
 
             int indice = (registros.FindIndex(x => x.id == antigoRegistro.id));
             registros[indice] = novoRegistro;
+            _serializator.Save(registros);
             return "REGISTRO_VALIDO";
         }
+
 
         public bool Excluir(T entidade)
         {
             --contadorNumero;
-            return registros.Remove(entidade);
+            bool exclui = registros.Remove(entidade);
+            _serializator.Save(registros);
+            return exclui;
         }
 
         public T SelecionarRegistro(Predicate<T> condicao)
@@ -75,8 +83,8 @@ namespace Dominio
         {
             int idatualiazado = 0;
             foreach (T registro in registros)
-                registro.id=++idatualiazado;
-          
+                registro.id = ++idatualiazado;
+
         }
     }
 }

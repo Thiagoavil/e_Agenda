@@ -9,28 +9,36 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Dominio;
 using E_Agenda.WinForms.ModuloCompromisso;
+using Infra;
 
 namespace E_Agenda.WinForms
 {
     public partial class TelaInicialForm : Form
     {
+        private readonly JsonSerialization<Tarefa> _jsonTarefaSerialization;
+        private readonly JsonSerialization<Contato> _jsonContatoSerialization;
+        private readonly JsonSerialization<Compromisso> _jsonCompromissoSerialization;
         private Repositorio<Tarefa> repositorioTarefa;
         private Repositorio<Contato> repositorioContato;
         private Repositorio<Compromisso> repositorioCompromisso;
+        
 
         public TelaInicialForm()
         {
+            _jsonTarefaSerialization = new(@"C:\Temp\Tarefas");
+            _jsonContatoSerialization = new(@"C:\Temp\Contato");
+            _jsonCompromissoSerialization = new(@"C:\Temp\Compromisso");
+            repositorioTarefa = new Repositorio<Tarefa>(_jsonTarefaSerialization);
+            repositorioContato = new Repositorio<Contato>(_jsonContatoSerialization);
+            repositorioCompromisso =new Repositorio<Compromisso>(_jsonCompromissoSerialization);
             InitializeComponent();
-            repositorioTarefa = new Repositorio<Tarefa>();
-            repositorioContato = new Repositorio<Contato>();
-            repositorioCompromisso =new Repositorio<Compromisso>();
         }
 
         private void btnAcessarContatos_Click(object sender, EventArgs e)
         {
             this.Hide();
 
-            ContatoForm tela = new (repositorioContato);
+            ContatoForm tela = new (repositorioContato, repositorioCompromisso);
             
             DialogResult resultado = tela.ShowDialog();
 
@@ -49,7 +57,7 @@ namespace E_Agenda.WinForms
         {
             this.Hide();
 
-            TarefaForm tela = new(repositorioTarefa);
+            TarefaForm tela = new(repositorioTarefa, _jsonTarefaSerialization);
 
             DialogResult resultado = tela.ShowDialog();
 
