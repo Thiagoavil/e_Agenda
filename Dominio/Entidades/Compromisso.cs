@@ -8,34 +8,27 @@ namespace Dominio
 {
     public class Compromisso : EntidadeBase
     {
-        public Contato contato;
-        public DateTime dataCompromisso;
-        DateTime horarioDeInicio;
-        DateTime horarioDeFim;
-        string assunto;
-        string local;
+        public Contato contato { get; set; }
+        public DateTime dataCompromisso { get; set; }
+        public TimeSpan horarioDeInicio { get; set; }
+        public TimeSpan horarioDeFim { get; set; }
+        public string assunto { get; set; }
+        public string local { get; set; }
 
-        public Compromisso(Contato contatoselecionado, DateTime dataCompromisso, DateTime horarioDeInicio, DateTime horarioDeFim,
-            string assunto, string local)
+        public Compromisso()
         {
-            this.dataCompromisso = dataCompromisso;
-            this.horarioDeInicio = horarioDeInicio;
-            this.horarioDeFim = horarioDeFim;
-            this.assunto = assunto;
-            this.local = local;
-
-            contato = contatoselecionado;
+            
         }
 
         public override string ToString()
         {
             return
-                "Contato: " + contato.nome + Environment.NewLine +
-                "Data do compromisso: " + dataCompromisso + Environment.NewLine +
-                "Hora de Inicio: " + horarioDeInicio + Environment.NewLine +
-                "Hora de Fim: " + horarioDeFim + Environment.NewLine +
-                "Assunto: " + assunto + Environment.NewLine +
-                "Local: " + local + Environment.NewLine;
+                "Contato: " + contato.nome +
+                "Data do compromisso: " + dataCompromisso +
+                "Hora de Inicio: " + horarioDeInicio +
+                "Hora de Fim: " + horarioDeFim +
+                "Assunto: " + assunto +
+                "Local: " + local;
         }
         public override string Validar()
         {
@@ -45,12 +38,12 @@ namespace Dominio
                 sb.AppendLine("Está sem assunto");
             if (string.IsNullOrEmpty(local))
                 sb.AppendLine("Está sem local");
-            if (dataCompromisso > DateTime.Now)
-                sb.AppendLine("Data de compromisso deve ser maior ou igual a hoje");
-            if (horarioDeFim > DateTime.Now)
-                sb.AppendLine("Hora de fim deve ser uma horar válida");
-            if (horarioDeInicio > DateTime.Now)
-                sb.AppendLine("Hora de inicio deve ser uma hora válida");
+            if (dataCompromisso == DateTime.MinValue)
+                sb.AppendLine("Coloque uma data");
+            if (horarioDeFim > horarioDeInicio)
+                sb.AppendLine("hora de fim inválida");
+
+            
 
             if (sb.Length == 0)
                 sb.Append("REGISTRO_VALIDO");

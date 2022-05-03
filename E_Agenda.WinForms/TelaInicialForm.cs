@@ -63,7 +63,7 @@ namespace E_Agenda.WinForms
         {
             this.Hide();
 
-            CompromissoForm tela = new (repositorioCompromisso);
+            CompromissoForm tela = new (repositorioCompromisso,repositorioContato);
 
             DialogResult resultado = tela.ShowDialog();
 

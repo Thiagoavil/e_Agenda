@@ -16,6 +16,7 @@ namespace Dominio
         public string telefone { get; set; }
         public string empresa { get; set; }
         public string cargo { get; set; }
+        public bool temCompromisso { get; set; }
 
 
 
@@ -56,7 +57,9 @@ namespace Dominio
                 sb.AppendLine("Email inválido");
             if (string.IsNullOrEmpty(telefone))
                 sb.AppendLine("O Telefone não pode estar vazio");
-                
+            if(telefone.Length<15)
+                sb.AppendLine("O Telefone não está no formato válido");
+
             if (sb.Length == 0)
                 sb.Append("REGISTRO_VALIDO");
 

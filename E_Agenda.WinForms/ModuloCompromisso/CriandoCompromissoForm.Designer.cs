@@ -35,12 +35,13 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.textBoxLocal = new System.Windows.Forms.TextBox();
+            this.textBoxAssunto = new System.Windows.Forms.TextBox();
+            this.maskedTextBoxDataCompromisso = new System.Windows.Forms.MaskedTextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
-            this.maskedTextBox3 = new System.Windows.Forms.MaskedTextBox();
+            this.maskedTextBoxHoraInicial = new System.Windows.Forms.MaskedTextBox();
+            this.maskedTextBoxHoraFinal = new System.Windows.Forms.MaskedTextBox();
+            this.buttonCancelar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listBoxContatos
@@ -52,7 +53,6 @@
             this.listBoxContatos.ScrollAlwaysVisible = true;
             this.listBoxContatos.Size = new System.Drawing.Size(376, 124);
             this.listBoxContatos.TabIndex = 0;
-            this.listBoxContatos.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -63,7 +63,6 @@
             this.label1.Size = new System.Drawing.Size(180, 25);
             this.label1.TabIndex = 1;
             this.label1.Text = "Selecione o Contato :";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -74,7 +73,6 @@
             this.label2.Size = new System.Drawing.Size(271, 25);
             this.label2.TabIndex = 2;
             this.label2.Text = "Digite a Data Do Compromisso :";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label3
             // 
@@ -105,7 +103,6 @@
             this.label5.Size = new System.Drawing.Size(296, 25);
             this.label5.TabIndex = 7;
             this.label5.Text = "Digite o assunto do Compromisso :";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label6
             // 
@@ -116,75 +113,88 @@
             this.label6.Size = new System.Drawing.Size(270, 25);
             this.label6.TabIndex = 8;
             this.label6.Text = "Digite o local do Compromisso :";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
-            // textBox4
+            // textBoxLocal
             // 
-            this.textBox4.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox4.Location = new System.Drawing.Point(332, 363);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(170, 30);
-            this.textBox4.TabIndex = 10;
+            this.textBoxLocal.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxLocal.Location = new System.Drawing.Point(332, 363);
+            this.textBoxLocal.Name = "textBoxLocal";
+            this.textBoxLocal.Size = new System.Drawing.Size(170, 30);
+            this.textBoxLocal.TabIndex = 10;
             // 
-            // textBox5
+            // textBoxAssunto
             // 
-            this.textBox5.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox5.Location = new System.Drawing.Point(332, 420);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(170, 30);
-            this.textBox5.TabIndex = 11;
+            this.textBoxAssunto.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxAssunto.Location = new System.Drawing.Point(332, 420);
+            this.textBoxAssunto.Name = "textBoxAssunto";
+            this.textBoxAssunto.Size = new System.Drawing.Size(170, 30);
+            this.textBoxAssunto.TabIndex = 11;
             // 
-            // maskedTextBox1
+            // maskedTextBoxDataCompromisso
             // 
-            this.maskedTextBox1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.maskedTextBox1.Location = new System.Drawing.Point(332, 192);
-            this.maskedTextBox1.Mask = "00/00/0000";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(170, 30);
-            this.maskedTextBox1.TabIndex = 12;
-            this.maskedTextBox1.ValidatingType = typeof(System.DateTime);
+            this.maskedTextBoxDataCompromisso.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.maskedTextBoxDataCompromisso.Location = new System.Drawing.Point(332, 192);
+            this.maskedTextBoxDataCompromisso.Mask = "00/00/0000";
+            this.maskedTextBoxDataCompromisso.Name = "maskedTextBoxDataCompromisso";
+            this.maskedTextBoxDataCompromisso.Size = new System.Drawing.Size(170, 30);
+            this.maskedTextBoxDataCompromisso.TabIndex = 12;
+            this.maskedTextBoxDataCompromisso.ValidatingType = typeof(System.DateTime);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(607, 440);
+            this.button1.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.button1.Location = new System.Drawing.Point(524, 440);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(94, 29);
             this.button1.TabIndex = 13;
             this.button1.Text = "Concluir";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.buttonConcluir_Click);
             // 
-            // maskedTextBox2
+            // maskedTextBoxHoraInicial
             // 
-            this.maskedTextBox2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.maskedTextBox2.Location = new System.Drawing.Point(332, 249);
-            this.maskedTextBox2.Mask = "00:00";
-            this.maskedTextBox2.Name = "maskedTextBox2";
-            this.maskedTextBox2.Size = new System.Drawing.Size(64, 30);
-            this.maskedTextBox2.TabIndex = 14;
-            this.maskedTextBox2.ValidatingType = typeof(System.DateTime);
+            this.maskedTextBoxHoraInicial.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.maskedTextBoxHoraInicial.Location = new System.Drawing.Point(332, 249);
+            this.maskedTextBoxHoraInicial.Mask = "00:00";
+            this.maskedTextBoxHoraInicial.Name = "maskedTextBoxHoraInicial";
+            this.maskedTextBoxHoraInicial.Size = new System.Drawing.Size(64, 30);
+            this.maskedTextBoxHoraInicial.TabIndex = 14;
+            this.maskedTextBoxHoraInicial.ValidatingType = typeof(System.DateTime);
             // 
-            // maskedTextBox3
+            // maskedTextBoxHoraFinal
             // 
-            this.maskedTextBox3.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.maskedTextBox3.Location = new System.Drawing.Point(332, 306);
-            this.maskedTextBox3.Mask = "00:00";
-            this.maskedTextBox3.Name = "maskedTextBox3";
-            this.maskedTextBox3.Size = new System.Drawing.Size(64, 30);
-            this.maskedTextBox3.TabIndex = 15;
-            this.maskedTextBox3.ValidatingType = typeof(System.DateTime);
+            this.maskedTextBoxHoraFinal.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.maskedTextBoxHoraFinal.Location = new System.Drawing.Point(332, 306);
+            this.maskedTextBoxHoraFinal.Mask = "00:00";
+            this.maskedTextBoxHoraFinal.Name = "maskedTextBoxHoraFinal";
+            this.maskedTextBoxHoraFinal.Size = new System.Drawing.Size(64, 30);
+            this.maskedTextBoxHoraFinal.TabIndex = 15;
+            this.maskedTextBoxHoraFinal.ValidatingType = typeof(System.DateTime);
+            // 
+            // buttonCancelar
+            // 
+            this.buttonCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.buttonCancelar.Location = new System.Drawing.Point(624, 440);
+            this.buttonCancelar.Name = "buttonCancelar";
+            this.buttonCancelar.Size = new System.Drawing.Size(94, 29);
+            this.buttonCancelar.TabIndex = 16;
+            this.buttonCancelar.Text = "Cancelar";
+            this.buttonCancelar.UseVisualStyleBackColor = true;
+            this.buttonCancelar.Click += new System.EventHandler(this.buttonCancelar_Click);
             // 
             // CriandoCompromissoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.ClientSize = new System.Drawing.Size(713, 481);
-            this.Controls.Add(this.maskedTextBox3);
-            this.Controls.Add(this.maskedTextBox2);
+            this.ClientSize = new System.Drawing.Size(730, 481);
+            this.Controls.Add(this.buttonCancelar);
+            this.Controls.Add(this.maskedTextBoxHoraFinal);
+            this.Controls.Add(this.maskedTextBoxHoraInicial);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.maskedTextBox1);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.maskedTextBoxDataCompromisso);
+            this.Controls.Add(this.textBoxAssunto);
+            this.Controls.Add(this.textBoxLocal);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -215,11 +225,12 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.TextBox textBoxLocal;
+        private System.Windows.Forms.TextBox textBoxAssunto;
+        private System.Windows.Forms.MaskedTextBox maskedTextBoxDataCompromisso;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox2;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox3;
+        private System.Windows.Forms.MaskedTextBox maskedTextBoxHoraInicial;
+        private System.Windows.Forms.MaskedTextBox maskedTextBoxHoraFinal;
+        private System.Windows.Forms.Button buttonCancelar;
     }
 }

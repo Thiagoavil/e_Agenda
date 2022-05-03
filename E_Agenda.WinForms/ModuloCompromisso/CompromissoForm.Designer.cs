@@ -28,35 +28,43 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.listBoxCompromisso = new System.Windows.Forms.ListBox();
+            this.listBoxCompromissoFuturos = new System.Windows.Forms.ListBox();
             this.buttonAdicionarCompromisso = new System.Windows.Forms.Button();
             this.buttonEditarCompromisso = new System.Windows.Forms.Button();
             this.buttonExcluirContato = new System.Windows.Forms.Button();
             this.buttonVoltar = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.buttonFiltrar = new System.Windows.Forms.Button();
+            this.maskedTextBoxDataFinal = new System.Windows.Forms.MaskedTextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.maskedTextBoxDataInicial = new System.Windows.Forms.MaskedTextBox();
+            this.DataInicial = new System.Windows.Forms.Label();
+            this.buttonFiltrar = new System.Windows.Forms.Button();
+            this.tabControlCompromissoPassado = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.listBoxCompromissospassados = new System.Windows.Forms.ListBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
+            this.tabControlCompromissoPassado.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // listBoxCompromisso
+            // listBoxCompromissoFuturos
             // 
-            this.listBoxCompromisso.FormattingEnabled = true;
-            this.listBoxCompromisso.ItemHeight = 25;
-            this.listBoxCompromisso.Location = new System.Drawing.Point(0, 0);
-            this.listBoxCompromisso.Name = "listBoxCompromisso";
-            this.listBoxCompromisso.Size = new System.Drawing.Size(596, 404);
-            this.listBoxCompromisso.TabIndex = 0;
-            this.listBoxCompromisso.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            this.listBoxCompromissoFuturos.FormattingEnabled = true;
+            this.listBoxCompromissoFuturos.ItemHeight = 25;
+            this.listBoxCompromissoFuturos.Location = new System.Drawing.Point(-1, -2);
+            this.listBoxCompromissoFuturos.Name = "listBoxCompromissoFuturos";
+            this.listBoxCompromissoFuturos.Size = new System.Drawing.Size(602, 354);
+            this.listBoxCompromissoFuturos.TabIndex = 0;
             // 
             // buttonAdicionarCompromisso
             // 
             this.buttonAdicionarCompromisso.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonAdicionarCompromisso.Location = new System.Drawing.Point(12, 12);
             this.buttonAdicionarCompromisso.Name = "buttonAdicionarCompromisso";
-            this.buttonAdicionarCompromisso.Size = new System.Drawing.Size(139, 94);
+            this.buttonAdicionarCompromisso.Size = new System.Drawing.Size(188, 73);
             this.buttonAdicionarCompromisso.TabIndex = 1;
             this.buttonAdicionarCompromisso.Text = "Adicionar Compromisso";
             this.buttonAdicionarCompromisso.UseVisualStyleBackColor = false;
@@ -65,23 +73,24 @@
             // buttonEditarCompromisso
             // 
             this.buttonEditarCompromisso.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonEditarCompromisso.Location = new System.Drawing.Point(241, 12);
+            this.buttonEditarCompromisso.Location = new System.Drawing.Point(206, 12);
             this.buttonEditarCompromisso.Name = "buttonEditarCompromisso";
-            this.buttonEditarCompromisso.Size = new System.Drawing.Size(139, 94);
+            this.buttonEditarCompromisso.Size = new System.Drawing.Size(188, 73);
             this.buttonEditarCompromisso.TabIndex = 2;
             this.buttonEditarCompromisso.Text = "Editar Compromisso";
             this.buttonEditarCompromisso.UseVisualStyleBackColor = false;
-            this.buttonEditarCompromisso.Click += new System.EventHandler(this.button2_Click);
+            this.buttonEditarCompromisso.Click += new System.EventHandler(this.buttonEditar_Click);
             // 
             // buttonExcluirContato
             // 
             this.buttonExcluirContato.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonExcluirContato.Location = new System.Drawing.Point(469, 12);
+            this.buttonExcluirContato.Location = new System.Drawing.Point(400, 12);
             this.buttonExcluirContato.Name = "buttonExcluirContato";
-            this.buttonExcluirContato.Size = new System.Drawing.Size(139, 94);
+            this.buttonExcluirContato.Size = new System.Drawing.Size(188, 73);
             this.buttonExcluirContato.TabIndex = 3;
             this.buttonExcluirContato.Text = "Excluir Compromisso";
             this.buttonExcluirContato.UseVisualStyleBackColor = false;
+            this.buttonExcluirContato.Click += new System.EventHandler(this.buttonExcluirCompromisso_Click);
             // 
             // buttonVoltar
             // 
@@ -97,27 +106,51 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.DarkCyan;
-            this.panel1.Controls.Add(this.comboBox2);
-            this.panel1.Controls.Add(this.buttonFiltrar);
+            this.panel1.Controls.Add(this.maskedTextBoxDataFinal);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.comboBox1);
-            this.panel1.Controls.Add(this.listBoxCompromisso);
+            this.panel1.Controls.Add(this.maskedTextBoxDataInicial);
+            this.panel1.Controls.Add(this.DataInicial);
+            this.panel1.Controls.Add(this.buttonFiltrar);
             this.panel1.Location = new System.Drawing.Point(12, 134);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(789, 369);
             this.panel1.TabIndex = 10;
             // 
-            // comboBox2
+            // maskedTextBoxDataFinal
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
-            "Completos",
-            "Incompletos"});
-            this.comboBox2.Location = new System.Drawing.Point(602, 148);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(184, 33);
-            this.comboBox2.TabIndex = 4;
-            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+            this.maskedTextBoxDataFinal.Location = new System.Drawing.Point(616, 186);
+            this.maskedTextBoxDataFinal.Mask = "00/00/0000";
+            this.maskedTextBoxDataFinal.Name = "maskedTextBoxDataFinal";
+            this.maskedTextBoxDataFinal.Size = new System.Drawing.Size(125, 31);
+            this.maskedTextBoxDataFinal.TabIndex = 7;
+            this.maskedTextBoxDataFinal.ValidatingType = typeof(System.DateTime);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(611, 158);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(94, 25);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Data Final";
+            // 
+            // maskedTextBoxDataInicial
+            // 
+            this.maskedTextBoxDataInicial.Location = new System.Drawing.Point(616, 46);
+            this.maskedTextBoxDataInicial.Mask = "00/00/0000";
+            this.maskedTextBoxDataInicial.Name = "maskedTextBoxDataInicial";
+            this.maskedTextBoxDataInicial.Size = new System.Drawing.Size(125, 31);
+            this.maskedTextBoxDataInicial.TabIndex = 5;
+            this.maskedTextBoxDataInicial.ValidatingType = typeof(System.DateTime);
+            // 
+            // DataInicial
+            // 
+            this.DataInicial.AutoSize = true;
+            this.DataInicial.Location = new System.Drawing.Point(611, 18);
+            this.DataInicial.Name = "DataInicial";
+            this.DataInicial.Size = new System.Drawing.Size(103, 25);
+            this.DataInicial.TabIndex = 4;
+            this.DataInicial.Text = "Data Inicial";
             // 
             // buttonFiltrar
             // 
@@ -128,27 +161,57 @@
             this.buttonFiltrar.Text = "Filtrar";
             this.buttonFiltrar.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // tabControlCompromissoPassado
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(602, 15);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(127, 25);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Visualiza por :";
+            this.tabControlCompromissoPassado.Controls.Add(this.tabPage1);
+            this.tabControlCompromissoPassado.Controls.Add(this.tabPage2);
+            this.tabControlCompromissoPassado.Location = new System.Drawing.Point(12, 102);
+            this.tabControlCompromissoPassado.Name = "tabControlCompromissoPassado";
+            this.tabControlCompromissoPassado.SelectedIndex = 0;
+            this.tabControlCompromissoPassado.Size = new System.Drawing.Size(610, 401);
+            this.tabControlCompromissoPassado.TabIndex = 11;
             // 
-            // comboBox1
+            // tabPage1
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Por dia",
-            "Por mês",
-            "Por Ano"});
-            this.comboBox1.Location = new System.Drawing.Point(602, 43);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(184, 33);
-            this.comboBox1.TabIndex = 1;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.tabPage1.Controls.Add(this.listBoxCompromissoFuturos);
+            this.tabPage1.Location = new System.Drawing.Point(4, 34);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(602, 363);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Compromissos futuros";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.listBoxCompromissospassados);
+            this.tabPage2.Location = new System.Drawing.Point(4, 34);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(602, 363);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Compromissos passados";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // listBoxCompromissospassados
+            // 
+            this.listBoxCompromissospassados.FormattingEnabled = true;
+            this.listBoxCompromissospassados.ItemHeight = 25;
+            this.listBoxCompromissospassados.Location = new System.Drawing.Point(0, 1);
+            this.listBoxCompromissospassados.Name = "listBoxCompromissospassados";
+            this.listBoxCompromissospassados.Size = new System.Drawing.Size(602, 354);
+            this.listBoxCompromissospassados.TabIndex = 1;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button1.Location = new System.Drawing.Point(594, 12);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(188, 73);
+            this.button1.TabIndex = 12;
+            this.button1.Text = "Carregar todos os Compromissos";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.buttonVisualizarTodas_Click);
             // 
             // CompromissoForm
             // 
@@ -156,6 +219,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1033, 504);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.tabControlCompromissoPassado);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.buttonVoltar);
             this.Controls.Add(this.buttonExcluirContato);
@@ -173,21 +238,30 @@
             this.Load += new System.EventHandler(this.Compromisso_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.tabControlCompromissoPassado.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.ListBox listBoxCompromisso;
+        private System.Windows.Forms.ListBox listBoxCompromissoFuturos;
         private System.Windows.Forms.Button buttonAdicionarCompromisso;
         private System.Windows.Forms.Button buttonEditarCompromisso;
         private System.Windows.Forms.Button buttonExcluirContato;
         private System.Windows.Forms.Button buttonVoltar;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button buttonFiltrar;
+        private System.Windows.Forms.MaskedTextBox maskedTextBoxDataFinal;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.MaskedTextBox maskedTextBoxDataInicial;
+        private System.Windows.Forms.Label DataInicial;
+        private System.Windows.Forms.TabControl tabControlCompromissoPassado;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.ListBox listBoxCompromissospassados;
+        private System.Windows.Forms.Button button1;
     }
 }
